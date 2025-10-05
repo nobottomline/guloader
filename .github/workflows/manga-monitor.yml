@@ -49,16 +49,38 @@ jobs:
         # Создаем директории если их нет
         mkdir -p data downloads scans
         
+        # Инициализируем базу данных если её нет
+        if [ ! -f "data/guloader.db" ]; then
+          echo "Initializing database..."
+          ./target/release/guloader --config config.toml init
+        fi
+        
         # Запускаем мониторинг
-        ./target/release/guloader monitor --config config.toml --auto-commit
+        echo "Starting manga monitoring..."
+        ./target/release/guloader --config config.toml monitor --auto-commit
+        
+        # Показываем статус после мониторинга
+        echo "Monitoring completed. Showing status..."
+        ./target/release/guloader --config config.toml status
     
     - name: Commit changes
       run: |
         # Проверяем есть ли изменения
         if [ -n "$(git status --porcelain)" ]; then
+          echo "Changes detected, committing..."
           git add .
-          git commit -m "🤖 Auto-update: New manga chapters downloaded $(date '+%Y-%m-%d %H:%M:%S')"
+          
+          # Создаем информативное сообщение коммита
+          COMMIT_MSG="🤖 Auto-update: $(date '+%Y-%m-%d %H:%M:%S UTC')
+          
+          Changes detected:
+          $(git status --porcelain | head -10)
+          
+          Run ID: ${{ github.run_id }}"
+          
+          git commit -m "$COMMIT_MSG"
           git push
+          echo "Changes committed successfully"
         else
           echo "No changes to commit"
         fi
