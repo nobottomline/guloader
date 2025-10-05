@@ -12,12 +12,15 @@ on:
 jobs:
   monitor:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
+        token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
     
     - name: Setup Rust
       uses: dtolnay/rust-toolchain@stable
@@ -40,8 +43,11 @@ jobs:
     
     - name: Configure Git
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        git config --global user.name "github-actions[bot]"
+        git config --global --add safe.directory "${{ github.workspace }}"
+        git config --local pull.rebase true
+        git config --local rebase.autoStash true
     
     - name: Run manga monitoring (5-min)
       run: |
@@ -70,15 +76,12 @@ jobs:
           git add .
           
           # Создаем информативное сообщение коммита
-          COMMIT_MSG="🤖 Auto-update: $(date '+%Y-%m-%d %H:%M:%S UTC')
-          
-          Changes detected:
-          $(git status --porcelain | head -10)
-          
-          Run ID: ${{ github.run_id }}"
+          COMMIT_MSG="🤖 Auto-update: $(date '+%Y-%m-%d %H:%M:%S UTC')\n\n$(git status --porcelain | head -20)\nRun ID: ${{ github.run_id }}"
           
           git commit -m "$COMMIT_MSG"
-          git push
+          # Обновляем локальную ветку перед пушем, чтобы избежать расхождений
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
           echo "Changes committed successfully"
         else
           echo "No changes to commit"
