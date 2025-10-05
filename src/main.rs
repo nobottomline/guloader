@@ -59,6 +59,9 @@ enum Commands {
         /// Automatically commit downloaded files to git
         #[arg(long)]
         auto_commit: bool,
+        /// Limit number of manga to process (for load distribution)
+        #[arg(long, default_value = "0")]
+        limit: usize,
     },
     /// Initialize database and configuration
     Init,
@@ -85,6 +88,9 @@ enum Commands {
         /// Добавить найденные манги в config.toml (в секцию [[manga]])
         #[arg(long = "cfg", help = "Добавить найденные манги в config.toml")] 
         add_to_cfg: bool,
+        /// Limit number of manga to process (for load distribution)
+        #[arg(long, default_value = "0")]
+        limit: usize,
     },
 }
 
@@ -168,9 +174,9 @@ async fn main() -> Result<()> {
             info!("Downloading chapter from {}: {}", site, chapter_url);
             run_downloader_by_site(&config, &db, &site, &chapter_url).await?;
         }
-        Commands::Monitor { auto_commit } => {
+        Commands::Monitor { auto_commit, limit } => {
             info!("Starting manga monitoring...");
-            run_monitor(&config, &db, auto_commit).await?;
+            run_monitor(&config, &db, auto_commit, limit).await?;
         }
         Commands::Status => {
             info!("Showing manga status...");
@@ -180,9 +186,9 @@ async fn main() -> Result<()> {
             info!("Cleaning up downloads older than {} days", days);
             cleanup_old_downloads(&config, &db, days).await?;
         }
-        Commands::Check { site, download, add_to_cfg } => {
+        Commands::Check { site, download, add_to_cfg, limit } => {
             info!("Checking catalogs (first page) for updates...");
-            run_check(&cli.config, &config, &db, site.as_deref(), download, add_to_cfg).await?;
+            run_check(&cli.config, &config, &db, site.as_deref(), download, add_to_cfg, limit).await?;
         }
     }
     
@@ -459,7 +465,7 @@ async fn cleanup_old_downloads(config: &Config, db: &Database, days: u32) -> Res
     Ok(())
 }
 
-async fn run_monitor(config: &Config, db: &Database, auto_commit: bool) -> Result<()> {
+async fn run_monitor(config: &Config, db: &Database, auto_commit: bool, limit: usize) -> Result<()> {
     use registry::{ScannerRegistry, DownloaderRegistry};
     
     info!("🔍 Starting manga monitoring cycle...");
@@ -468,7 +474,14 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool) -> Resul
     let downloader_registry = DownloaderRegistry::new();
     
     // Получаем все манги из конфига
-    let all_manga = db.get_all_manga().await?;
+    let mut all_manga = db.get_all_manga().await?;
+    
+    // Применяем ограничение если указано
+    if limit > 0 {
+        info!("📊 Limiting processing to {} manga for load distribution", limit);
+        all_manga.truncate(limit);
+    }
+    
     let mut new_chapters_found = 0;
     let mut chapters_downloaded = 0;
     let mut failed_downloads = 0;
@@ -598,7 +611,7 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool) -> Resul
     Ok(())
 }
 
-async fn run_check(config_path: &str, config: &Config, db: &Database, site_filter: Option<&str>, download_all: bool, add_to_cfg: bool) -> Result<()> {
+async fn run_check(config_path: &str, config: &Config, db: &Database, site_filter: Option<&str>, download_all: bool, add_to_cfg: bool, limit: usize) -> Result<()> {
     use registry::CatalogRegistry;
     use tracing::{warn, info};
 
@@ -620,7 +633,16 @@ async fn run_check(config_path: &str, config: &Config, db: &Database, site_filte
             info!("🌐 Checking catalog for site: {} ({})", site_name, site_cfg.base_url);
             let entries = checker.fetch_first_page(site_cfg).await?;
             let mut added = 0usize;
-            for entry in entries {
+            
+            // Применяем ограничение если указано
+            let entries_to_process = if limit > 0 {
+                info!("📊 Limiting catalog processing to {} entries for load distribution", limit);
+                entries.into_iter().take(limit).collect()
+            } else {
+                entries
+            };
+            
+            for entry in entries_to_process {
                 let exists_in_db = db.get_manga_by_url(&entry.url).await?.is_some();
 
                 // При --cfg записываем в config.toml независимо от наличия в БД (без дублей)

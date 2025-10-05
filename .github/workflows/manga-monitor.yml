@@ -2,7 +2,7 @@ name: Manga Monitor
 
 on:
   schedule:
-    # Мониторинг (каждые 5 минут)
+    # Мониторинг каждые 5 минут, но только 50 манг за раз
     - cron: '*/5 * * * *'
   workflow_dispatch: # Позволяет запускать вручную
   push:
@@ -38,6 +38,13 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-cargo-
     
+    - name: Clean up disk space
+      run: |
+        # Очищаем старые файлы перед началом
+        sudo rm -rf /tmp/*
+        sudo rm -rf ~/.cargo/registry/cache/*
+        df -h
+        
     - name: Build guloader
       run: cargo build --release
     
@@ -49,7 +56,7 @@ jobs:
         git config --local pull.rebase true
         git config --local rebase.autoStash true
     
-    - name: Run manga monitoring (5-min)
+    - name: Run manga monitoring (5-min, limited load)
       run: |
         # Создаем директории если их нет
         mkdir -p data downloads scans
@@ -60,13 +67,23 @@ jobs:
           ./target/release/guloader --config config.toml init
         fi
         
-        # Запускаем мониторинг
-        echo "Starting manga monitoring (5-min)..."
-        ./target/release/guloader --config config.toml monitor --auto-commit
+        # Запускаем мониторинг с ограниченной нагрузкой
+        echo "Starting manga monitoring (5-min, limited to 50 manga)..."
+        echo "Processing only 50 manga from config to distribute load..."
+        
+        # Мониторим только часть манг для распределения нагрузки
+        ./target/release/guloader --config config.toml monitor --auto-commit --limit 50
         
         # Показываем статус после мониторинга
         echo "Monitoring completed. Showing status..."
         ./target/release/guloader --config config.toml status
+        
+        # Очищаем только временные файлы, НЕ удаляем downloads/
+        echo "Cleaning up temporary files..."
+        find data/ -name "*.db-journal" -delete 2>/dev/null || true
+        find scans/ -type f -mtime +1 -delete 2>/dev/null || true
+        # НЕ удаляем downloads/ - они должны сохраняться!
+        df -h
     
     - name: Commit changes
       run: |
