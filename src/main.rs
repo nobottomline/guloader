@@ -8,6 +8,7 @@ mod models;
 mod traits;
 mod registry;
 mod scanners;
+mod checkers;
 mod downloaders;
 mod storage;
 mod utils;
@@ -68,6 +69,22 @@ enum Commands {
         /// Days to keep downloads
         #[arg(default_value = "30")]
         days: u32,
+    },
+    /// Проверить первую страницу каталога сайта(ов) и добавить новые манги
+    /// Примеры:
+    ///   guloader check              # все сайты из config.toml, без скачивания
+    ///   guloader check eros         # только eros
+    ///   guloader check all -d       # все сайты, скачать все главы у найденных манг
+    ///   guloader check all -d --cfg # как выше + добавить найденные манги в config.toml
+    Check {
+        /// Имя сайта (например, "eros") или "all" для всех сайтов
+        site: Option<String>,
+        /// Скачать все главы у каждой найденной манги
+        #[arg(short = 'd', long, help = "Скачать все главы у найденных манг")] 
+        download: bool,
+        /// Добавить найденные манги в config.toml (в секцию [[manga]])
+        #[arg(long = "cfg", help = "Добавить найденные манги в config.toml")] 
+        add_to_cfg: bool,
     },
 }
 
@@ -162,6 +179,10 @@ async fn main() -> Result<()> {
         Commands::Cleanup { days } => {
             info!("Cleaning up downloads older than {} days", days);
             cleanup_old_downloads(&config, &db, days).await?;
+        }
+        Commands::Check { site, download, add_to_cfg } => {
+            info!("Checking catalogs (first page) for updates...");
+            run_check(&cli.config, &config, &db, site.as_deref(), download, add_to_cfg).await?;
         }
     }
     
@@ -578,5 +599,89 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool) -> Resul
         info!("🔄 Auto-commit is enabled, but git operations should be handled by GitHub Actions");
     }
     
+    Ok(())
+}
+
+async fn run_check(config_path: &str, config: &Config, db: &Database, site_filter: Option<&str>, download_all: bool, add_to_cfg: bool) -> Result<()> {
+    use registry::CatalogRegistry;
+    use tracing::{warn, info};
+
+    let registry = CatalogRegistry::new();
+
+    // Перебираем сайты из конфига (или один сайт)
+    let site_entries: Vec<(&String, &crate::config::SiteConfig)> = match site_filter {
+        Some(name) if name == "all" => config.sites.iter().collect(),
+        Some(name) => config
+            .sites
+            .iter()
+            .filter(|(k, _)| k.as_str() == name)
+            .collect(),
+        None => config.sites.iter().collect(),
+    };
+
+    for (site_name, site_cfg) in site_entries {
+        if let Some(checker) = registry.get_checker(site_name) {
+            info!("🌐 Checking catalog for site: {} ({})", site_name, site_cfg.base_url);
+            let entries = checker.fetch_first_page(site_cfg).await?;
+            let mut added = 0usize;
+            for entry in entries {
+                let exists_in_db = db.get_manga_by_url(&entry.url).await?.is_some();
+
+                // При --cfg записываем в config.toml независимо от наличия в БД (без дублей)
+                if add_to_cfg {
+                    let mut cfg = Config::load(config_path)?;
+                    let already_in_cfg = cfg.manga.iter().any(|m| m.url == entry.url);
+                    if !already_in_cfg {
+                        cfg.manga.push(crate::config::MangaConfig {
+                            title: entry.title.clone(),
+                            site: site_name.clone(),
+                            url: entry.url.clone(),
+                            active: true,
+                        });
+                        cfg.save(config_path)?;
+                        info!("📝 Added to config.toml: {}", entry.title);
+                    }
+                }
+
+                // Если в БД уже есть — пропускаем создание в БД
+                if exists_in_db {
+                    continue;
+                }
+
+                let manga = crate::models::Manga {
+                    id: uuid::Uuid::new_v4().to_string(),
+                    title: entry.title.clone(),
+                    site: site_name.clone(),
+                    url: entry.url.clone(),
+                    description: None,
+                    cover_url: entry.cover_url.clone(),
+                    status: crate::models::MangaStatus::Active,
+                    chapter_count: 0,
+                    last_updated: chrono::Utc::now(),
+                    created_at: chrono::Utc::now(),
+                    updated_at: chrono::Utc::now(),
+                };
+                db.create_manga(&manga).await?;
+                added += 1;
+                info!("➕ Added manga to DB from catalog: {}", entry.title);
+
+                if download_all {
+                    let scanner_registry = registry::ScannerRegistry::new();
+                    scanner_registry.scan_manga(config, db, &manga.id).await?;
+
+                    let chapters = db.get_chapters_by_manga_id(&manga.id).await?;
+                    let downloader_registry = registry::DownloaderRegistry::new();
+                    for chapter in chapters {
+                        if chapter.status == crate::models::ChapterStatus::Downloaded { continue; }
+                        let _ = downloader_registry.download_chapter_to_scans(config, db, &chapter).await;
+                    }
+                }
+            }
+            info!("✅ Catalog check done for {}. New manga added: {}", site_name, added);
+        } else {
+            warn!("Catalog check not implemented for site: {}", site_name);
+        }
+    }
+
     Ok(())
 }

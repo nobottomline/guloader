@@ -93,6 +93,12 @@ impl Config {
         Ok(config)
     }
     
+    pub fn save<P: AsRef<Path>>(&self, path: P) -> Result<()> {
+        let toml_str = toml::to_string_pretty(self)?;
+        fs::write(path, toml_str)?;
+        Ok(())
+    }
+    
     
     pub fn get_site_config(&self, site_name: &str) -> Option<&SiteConfig> {
         self.sites.get(site_name)

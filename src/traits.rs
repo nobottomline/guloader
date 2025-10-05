@@ -21,3 +21,18 @@ pub trait ChapterDownloader: Send + Sync {
     /// Download a single image
     async fn download_image(&self, image_url: &str, local_path: &str) -> Result<()>;
 }
+
+/// Lightweight catalog entry from site catalog first page
+#[derive(Debug, Clone)]
+pub struct CatalogEntry {
+    pub title: String,
+    pub url: String,
+    pub cover_url: Option<String>,
+}
+
+/// Trait for site catalog checkers (first page only)
+#[async_trait::async_trait]
+pub trait CatalogChecker: Send + Sync {
+    /// Fetch latest catalog entries from the first page (recent updates)
+    async fn fetch_first_page(&self, config: &SiteConfig) -> Result<Vec<CatalogEntry>>;
+}

@@ -1,0 +1,60 @@
+name: Manga Catalog Full Check
+
+on:
+  schedule:
+    # Каждые 60 минут
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt, clippy
+
+    - name: Cache cargo
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Build
+      run: cargo build --release
+
+    - name: Run full catalog check (hourly)
+      run: |
+        mkdir -p data downloads scans
+
+        if [ ! -f "data/guloader.db" ]; then
+          echo "Initializing database..."
+          ./target/release/guloader --config config.toml init
+        fi
+
+        echo "Starting hourly full catalog check..."
+        # Полная проверка: все сайты, скачать все главы и записать в конфиг
+        ./target/release/guloader --config config.toml check all -d --cfg
+
+    - name: Commit changes
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          git add .
+          COMMIT_MSG="🤖 Hourly Catalog: $(date '+%Y-%m-%d %H:%M:%S UTC')\n\n$(git status --porcelain | head -20)\nRun ID: ${{ github.run_id }}"
+          git commit -m "$COMMIT_MSG"
+          git push
+        else
+          echo "No changes to commit"
+        fi
+
+

@@ -1,4 +1,4 @@
-use crate::traits::{MangaScanner, ChapterDownloader};
+use crate::traits::{MangaScanner, ChapterDownloader, CatalogChecker};
 use crate::models::Chapter;
 use crate::config::Config;
 use crate::database::Database;
@@ -8,6 +8,7 @@ use crate::scanners::eros::ErosScanner;
 use crate::scanners::madara::MadaraScanner;
 use crate::downloaders::eros::ErosDownloader;
 use crate::downloaders::madara::MadaraDownloader;
+use crate::checkers::eros::ErosCatalogChecker;
 
 /// Registry for managing scanners
 pub struct ScannerRegistry {
@@ -109,6 +110,27 @@ impl ScannerRegistry {
 /// Registry for managing downloaders
 pub struct DownloaderRegistry {
     downloaders: std::collections::HashMap<String, Box<dyn ChapterDownloader>>,
+}
+
+/// Registry for catalog checkers
+pub struct CatalogRegistry {
+    checkers: std::collections::HashMap<String, Box<dyn CatalogChecker>>, 
+}
+
+impl CatalogRegistry {
+    pub fn new() -> Self {
+        let mut registry = Self { checkers: std::collections::HashMap::new() };
+        registry.register_checker("eros", Box::new(ErosCatalogChecker::new()));
+        registry
+    }
+
+    pub fn register_checker(&mut self, name: &str, checker: Box<dyn CatalogChecker>) {
+        self.checkers.insert(name.to_string(), checker);
+    }
+
+    pub fn get_checker(&self, name: &str) -> Option<&dyn CatalogChecker> {
+        self.checkers.get(name).map(|c| c.as_ref())
+    }
 }
 
 impl DownloaderRegistry {

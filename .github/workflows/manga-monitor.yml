@@ -2,7 +2,7 @@ name: Manga Monitor
 
 on:
   schedule:
-    # Запускаем каждые 5 минут
+    # Мониторинг (каждые 5 минут)
     - cron: '*/5 * * * *'
   workflow_dispatch: # Позволяет запускать вручную
   push:
@@ -43,7 +43,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
     
-    - name: Run manga monitoring
+    - name: Run manga monitoring (5-min)
       run: |
         # Создаем директории если их нет
         mkdir -p data downloads scans
@@ -55,7 +55,7 @@ jobs:
         fi
         
         # Запускаем мониторинг
-        echo "Starting manga monitoring..."
+        echo "Starting manga monitoring (5-min)..."
         ./target/release/guloader --config config.toml monitor --auto-commit
         
         # Показываем статус после мониторинга
