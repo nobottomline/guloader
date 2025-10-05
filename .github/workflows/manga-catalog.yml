@@ -2,8 +2,8 @@ name: Manga Catalog Full Check
 
 on:
   schedule:
-    # Каждые 10 часов (0:00, 10:00, 20:00)
-    - cron: '0 */10 * * *'
+    # Каждые 3 часа (0:00, 3:00, 6:00, 9:00, 12:00, 15:00, 18:00, 21:00)
+    - cron: '0 */3 * * *'
   workflow_dispatch:
 
 jobs:
@@ -35,9 +35,13 @@ jobs:
 
     - name: Clean up disk space
       run: |
-        # Очищаем старые файлы перед началом
+        # Агрессивная очистка диска перед началом
         sudo rm -rf /tmp/*
         sudo rm -rf ~/.cargo/registry/cache/*
+        sudo rm -rf /var/cache/*
+        sudo rm -rf /var/log/*
+        sudo apt-get clean
+        sudo apt-get autoclean
         df -h
 
     - name: Build
@@ -52,25 +56,29 @@ jobs:
           ./target/release/guloader --config config.toml init
         fi
 
-        echo "Starting 10-hour catalog check cycle..."
-        echo "Processing 50 manga per 20-minute batch..."
+        echo "Starting 3-hour catalog check cycle..."
+        echo "Processing 10 manga per batch..."
         
         # Полная проверка: все сайты, скачать все главы и записать в конфиг
-        # Ограничиваем нагрузку: обрабатываем по 50 манг за раз
-        ./target/release/guloader --config config.toml check all -d --cfg --limit 50
+        # Ограничиваем нагрузку: обрабатываем по 10 манг за раз
+        ./target/release/guloader --config config.toml check all -d --cfg --limit 10
         
-        echo "Catalog check cycle completed. Waiting 20 minutes before next batch..."
-        sleep 1200  # 20 минут
+        echo "Catalog check cycle completed. Waiting 5 minutes before next batch..."
+        sleep 300  # 5 минут
         
         # Повторяем еще один цикл для распределения нагрузки
         echo "Starting second batch..."
-        ./target/release/guloader --config config.toml check all -d --cfg --limit 50
+        ./target/release/guloader --config config.toml check all -d --cfg --limit 10
         
         # Очищаем только временные файлы, НЕ удаляем downloads/
         echo "Cleaning up temporary files..."
         find data/ -name "*.db-journal" -delete 2>/dev/null || true
         find scans/ -type f -mtime +1 -delete 2>/dev/null || true
         # НЕ удаляем downloads/ - они должны сохраняться!
+        
+        # Дополнительная очистка системных файлов
+        sudo rm -rf /tmp/*
+        sudo rm -rf ~/.cargo/registry/cache/*
         df -h
 
     - name: Commit changes
