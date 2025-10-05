@@ -9,21 +9,38 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://thunderscans.com"
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
 scanner_type = "madara"
 downloader_type = "madara"
 rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.thunder.selectors]
+[sites.madara.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [sites.eros]
@@ -43,15 +60,15 @@ image_container = ".reader-main"
 image_url = ".reader-main img"
 next_page = ".nav-next a"
 
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
 scanner_type = "madara"
 downloader_type = "madara"
 rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.madara.selectors]
+[sites.thunder.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -243,4 +260,364 @@ active = true
 title = "Murim’s Youngest Miracle Demon Doctor"
 site = "eros"
 url = "https://eros-moon.xyz/manga/murims-youngest-miracle-demon-doctor/"
+active = true
+
+[[manga]]
+title = "I Became The Villain The Hero Is Obsessed With"
+site = "madara"
+url = "https://madarascans.com/series/i-became-the-villain-the-hero-is-obsessed-with/"
+active = true
+
+[[manga]]
+title = "My Disciples Are All Big Villains"
+site = "madara"
+url = "https://madarascans.com/series/my-disciples-are-all-big-villains/"
+active = true
+
+[[manga]]
+title = "I Became a Swordsmanship Instructor at the Academy"
+site = "madara"
+url = "https://madarascans.com/series/the-academys-new-swordmaster/"
+active = true
+
+[[manga]]
+title = "People Actually Think Cultivation Is Hard?"
+site = "madara"
+url = "https://madarascans.com/series/people-actually-think-cultivation-is-hard/"
+active = true
+
+[[manga]]
+title = "The Yellow-Haired Villain in the Female Main Character’s Novel Wants Happiness"
+site = "madara"
+url = "https://madarascans.com/series/the-yellow-haired-villain-in-the-female-main-characters-novel-wants-happiness/"
+active = true
+
+[[manga]]
+title = "Secret Family"
+site = "madara"
+url = "https://madarascans.com/series/secret-family/"
+active = true
+
+[[manga]]
+title = "Fighting Uncle"
+site = "madara"
+url = "https://madarascans.com/series/fighting-uncle/"
+active = true
+
+[[manga]]
+title = "Infinite Awakening"
+site = "madara"
+url = "https://madarascans.com/series/infinite-awakening/"
+active = true
+
+[[manga]]
+title = "The Genius Midfielder’s Passes are Special"
+site = "madara"
+url = "https://madarascans.com/series/the-genius-midfielders-passes-are-special/"
+active = true
+
+[[manga]]
+title = "After being laid off, I got hundreds of millions of systems, and I upgraded them alone"
+site = "madara"
+url = "https://madarascans.com/series/after-being-laid-off-i-got-hundreds-of-millions-of-systems-and-i-upgraded-them-alone/"
+active = true
+
+[[manga]]
+title = "Axe God: The Invincible Road"
+site = "madara"
+url = "https://madarascans.com/series/axe-god-the-invincible-road/"
+active = true
+
+[[manga]]
+title = "0th correctional officer"
+site = "madara"
+url = "https://madarascans.com/series/0th-correctional-officer/"
+active = true
+
+[[manga]]
+title = "Trillions of Resources in Apocalypse"
+site = "madara"
+url = "https://madarascans.com/series/trillions-of-resources-in-apocalypse/"
+active = true
+
+[[manga]]
+title = "From Rural Instructor to Sword Saint"
+site = "madara"
+url = "https://madarascans.com/series/from-rural-instructor-to-sword-saint/"
+active = true
+
+[[manga]]
+title = "Divine Ring Descends: The Strongest Otherworld"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/divine-ring-descends-the-strongest-otherworld/"
+active = true
+
+[[manga]]
+title = "Magic Level 99990000 All-Attribute Great Sage"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/magic-level-99990000-all-attribute-great-sage/"
+active = true
+
+[[manga]]
+title = "I Got The Weakest Class, Dragon Tamer!?"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/0086250808-i-got-the-weakest-class-dragon-tamer/"
+active = true
+
+[[manga]]
+title = "Demonic Emperor"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/demonic-emperor/"
+active = true
+
+[[manga]]
+title = "My Dad Is Too Strong"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/my-dad-is-too-strong/"
+active = true
+
+[[manga]]
+title = "I Was More Overpowered Than the Hero So I Held My Power"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/i-was-more-overpowered-than-the-hero-so-i-held-my-power/"
+active = true
+
+[[manga]]
+title = "I Shall Seal the Heavens"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/i-shall-seal-the-heavens/"
+active = true
+
+[[manga]]
+title = "The Genius Blacksmith’s Game"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-genius-blacksmiths-game/"
+active = true
+
+[[manga]]
+title = "The Great Heavenly Demon Sovereign"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-great-heavenly-demon-sovereign/"
+active = true
+
+[[manga]]
+title = "The Last Rebel: The Savior Android Levels Up to Change the Future"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-last-rebel-the-savior-android-levels-up-to-change-the-future/"
+active = true
+
+[[manga]]
+title = "Becoming a God in the Binary World"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/becoming-a-god-in-the-binary-world/"
+active = true
+
+[[manga]]
+title = "Curse of the Vengeful Tongue"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/curse-of-the-vengeful-tongue/"
+active = true
+
+[[manga]]
+title = "The Youngest Son of the Eunhae Merchant Group"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-youngest-son-of-the-eunhae-merchant-group/"
+active = true
+
+[[manga]]
+title = "Savior of Divine Blood ~Draw Out 0.00000001% To Become the Strongest~"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/savior-of-divine-blood-draw-out-0-00000001-to-become-the-strongest/"
+active = true
+
+[[manga]]
+title = "The Guided Adventurer: Fast-Route to Becoming the Strongest"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-guided-adventurer-fast-route-to-becoming-the-strongest/"
+active = true
+
+[[manga]]
+title = "Tyrant of the Otherworld: My Shadow Can Evolve Infinitely"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/tyrant-of-the-otherworld-my-shadow-can-evolve-infinitely/"
+active = true
+
+[[manga]]
+title = "The Thousand-Faced Actor"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-thousand-faced-actor/"
+active = true
+
+[[manga]]
+title = "A Mountain of Corpses, A Sea of Blood"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/a-mountain-of-corpses-a-sea-of-blood/"
+active = true
+
+[[manga]]
+title = "Memoir of the God of War"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/memoir-of-the-god-of-war/"
+active = true
+
+[[manga]]
+title = "Solo Conqueror of the Chaotic World"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/solo-conqueror-of-the-chaotic-world/"
+active = true
+
+[[manga]]
+title = "The Tutorial is Too Hard"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/the-tutorial-is-too-hard/"
+active = true
+
+[[manga]]
+title = "Childhood Friend of the Zenith"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/childhood-friend-of-the-zenith/"
+active = true
+
+[[manga]]
+title = "Others level up, I cultivate—emerging only at Great Ascension"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/others-level-up-i-cultivate-emerging-only-at-great-ascension/"
+active = true
+
+[[manga]]
+title = "I Shall Seal the Heavens"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/i-shall-seal-the-heavens/"
+active = true
+
+[[manga]]
+title = "I, the creator of the evil god"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/i-the-creator-of-the-evil-god/"
+active = true
+
+[[manga]]
+title = "I alone cut down the chaotic world"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/i-alone-cut-down-the-chaotic-world/"
+active = true
+
+[[manga]]
+title = "Never mess with Senior Brother"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/never-mess-with-senior-brother/"
+active = true
+
+[[manga]]
+title = "Beast Evolution"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/beast-evolution/"
+active = true
+
+[[manga]]
+title = "From the womb to dominance: Unbeatable at birth"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/from-the-womb-to-dominance-unbeatable-at-birth/"
+active = true
+
+[[manga]]
+title = "Eternally Regressing Knight"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/eternally-regressing-knight/"
+active = true
+
+[[manga]]
+title = "The Great Mage Returns After 4000 Years"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/the-great-mage-returns-after-4000-years/"
+active = true
+
+[[manga]]
+title = "Revenge of the Iron-Blooded Sword Hound"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/revenge-of-the-iron-blooded-sword-hound-2/"
+active = true
+
+[[manga]]
+title = "Evolution Begins With A Big Tree"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/evolution-begins-with-a-big-tree/"
+active = true
+
+[[manga]]
+title = "Magic Emperor"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/magic-emperor/"
+active = true
+
+[[manga]]
+title = "Solo Bug Player"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/solo-bug-player/"
+active = true
+
+[[manga]]
+title = "The Genius Midfielder’s Pass Is Special"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/the-genius-midfielders-pass-is-special/"
+active = true
+
+[[manga]]
+title = "System Creator: Reborn to Stop the Apocalypse"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/system-creator-reborn-to-stop-the-apocalypse/"
+active = true
+
+[[manga]]
+title = "Reincarnated as an Abandoned Baby Princess"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/reincarnated-as-an-abandoned-baby-princess/"
+active = true
+
+[[manga]]
+title = "Trash of the Count’s Family"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/trash-of-the-counts-family/"
+active = true
+
+[[manga]]
+title = "Magic Academy’s Genius Blinker"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/magic-academys-genius-blinker/"
+active = true
+
+[[manga]]
+title = "Swordmaster’s Youngest Son"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/swordmasters-youngest-son-2/"
+active = true
+
+[[manga]]
+title = "Reborn Ranker – Gravity User"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/reborn-ranker-gravity-user/"
+active = true
+
+[[manga]]
+title = "Overgeared"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/overgeared/"
+active = true
+
+[[manga]]
+title = "Standard of Reincarnation"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/standard-of-reincarnation/"
+active = true
+
+[[manga]]
+title = "Dungeon Odyssey"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/dungeon-odyssey/"
+active = true
+
+[[manga]]
+title = "My Lucky Encounter From The Game Turned Into Reality"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/my-lucky-encounter-from-the-game-turned-into-reality-2/"
 active = true

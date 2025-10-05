@@ -9,6 +9,7 @@ use crate::scanners::madara::MadaraScanner;
 use crate::downloaders::eros::ErosDownloader;
 use crate::downloaders::madara::MadaraDownloader;
 use crate::checkers::eros::ErosCatalogChecker;
+use crate::checkers::madara::MadaraCatalogChecker;
 
 /// Registry for managing scanners
 pub struct ScannerRegistry {
@@ -23,6 +24,7 @@ impl ScannerRegistry {
         
         // Register built-in scanners
         registry.register_scanner("eros", Box::new(ErosScanner::new()));
+        registry.register_scanner("tecno", Box::new(ErosScanner::new())); // tecno-moon.xyz как Eros
         registry.register_scanner("madara", Box::new(MadaraScanner::new()));
         registry.register_scanner("thunder", Box::new(MadaraScanner::new())); // Thunderscans использует тот же парсер
         
@@ -121,6 +123,9 @@ impl CatalogRegistry {
     pub fn new() -> Self {
         let mut registry = Self { checkers: std::collections::HashMap::new() };
         registry.register_checker("eros", Box::new(ErosCatalogChecker::new()));
+        registry.register_checker("tecno", Box::new(ErosCatalogChecker::new()));
+        registry.register_checker("madara", Box::new(MadaraCatalogChecker::new()));
+        registry.register_checker("thunder", Box::new(MadaraCatalogChecker::new()));
         registry
     }
 
@@ -141,6 +146,7 @@ impl DownloaderRegistry {
         
         // Register built-in downloaders
         registry.register_downloader("eros", Box::new(ErosDownloader::new()));
+        registry.register_downloader("tecno", Box::new(ErosDownloader::new())); // tecno-moon.xyz как Eros
         registry.register_downloader("madara", Box::new(MadaraDownloader::new()));
         registry.register_downloader("thunder", Box::new(MadaraDownloader::new())); // Thunderscans использует тот же загрузчик
         
