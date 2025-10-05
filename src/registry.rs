@@ -59,12 +59,8 @@ impl ScannerRegistry {
                 let mut new_chapters = 0;
                 
                 for chapter in chapters {
-                    // Check if chapter already exists
-                    let existing_chapters = db.get_chapters_by_manga_id(&manga.id).await?;
-                    let chapter_exists = existing_chapters.iter()
-                        .any(|c| (c.number - chapter.number).abs() < 0.01);
-                    
-                    if !chapter_exists {
+                    // Точная проверка существования по manga_id + number
+                    if db.get_chapter_by_manga_and_number(&manga.id, chapter.number).await?.is_none() {
                         db.create_chapter(&chapter).await?;
                         new_chapters += 1;
                     }

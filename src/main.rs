@@ -498,17 +498,13 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool) -> Resul
         match scanner.scan_manga(site_config, &manga).await {
             Ok(chapters) => {
                 // Получаем существующие главы из базы данных
-                let existing_chapters = db.get_chapters_by_manga_id(&manga.id).await?;
-                let existing_numbers: std::collections::HashSet<String> = existing_chapters
-                    .iter()
-                    .map(|c| c.number.to_string())
-                    .collect();
-                
-                // Находим новые главы
-                let new_chapters: Vec<_> = chapters
-                    .into_iter()
-                    .filter(|chapter| !existing_numbers.contains(&chapter.number.to_string()))
-                    .collect();
+                // Фильтруем только те главы, которых ещё нет в БД (точная проверка по manga_id+number)
+                let mut new_chapters: Vec<_> = Vec::new();
+                for ch in chapters.into_iter() {
+                    if db.get_chapter_by_manga_and_number(&manga.id, ch.number).await?.is_none() {
+                        new_chapters.push(ch);
+                    }
+                }
                 
                 if !new_chapters.is_empty() {
                     info!("🆕 Found {} new chapters for manga: {}", new_chapters.len(), manga.title);

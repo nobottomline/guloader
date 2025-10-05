@@ -258,6 +258,17 @@ impl Database {
         Ok(chapters)
     }
     
+    pub async fn get_chapter_by_manga_and_number(&self, manga_id: &str, number: f64) -> Result<Option<Chapter>> {
+        let chapter = sqlx::query_as::<_, Chapter>(
+                "SELECT * FROM chapters WHERE manga_id = ? AND ABS(number - ?) < 0.001 LIMIT 1"
+            )
+            .bind(manga_id)
+            .bind(number)
+            .fetch_optional(&self.pool)
+            .await?;
+        Ok(chapter)
+    }
+    
     pub async fn update_chapter(&self, chapter: &Chapter) -> Result<()> {
         sqlx::query(
             r#"
