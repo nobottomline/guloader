@@ -61,7 +61,7 @@ impl ScannerRegistry {
                 for chapter in chapters {
                     // Точная проверка существования по manga_id + number
                     if db.get_chapter_by_manga_and_number(&manga.id, chapter.number).await?.is_none() {
-                        db.create_chapter(&chapter).await?;
+                        let _ = db.create_or_get_chapter(&chapter).await?;
                         new_chapters += 1;
                     }
                 }

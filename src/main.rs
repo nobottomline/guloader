@@ -364,8 +364,8 @@ async fn run_downloader_by_site(config: &Config, db: &Database, site: &str, chap
         chapter_url.to_string(),
     );
     
-    // First, save the chapter to database
-    db.create_chapter(&chapter).await?;
+    // First, save the chapter to database (ignore duplicates)
+    let _chapter = db.create_or_get_chapter(&chapter).await?;
     
     // Download using the site-specific downloader
     match downloader_registry.download_chapter(config, db, chapter_url).await {
@@ -514,8 +514,8 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool) -> Resul
                     for chapter in new_chapters {
                         info!("⬇️ Downloading new chapter: {} (Chapter {})", chapter.title, chapter.number);
                         
-                        // Сначала сохраняем главу в базу данных
-                        db.create_chapter(&chapter).await?;
+                        // Сначала сохраняем главу в базу данных (без дублей)
+                        let chapter = db.create_or_get_chapter(&chapter).await?;
                         
                         // Пытаемся скачать главу
                         match downloader_registry.download_chapter(config, db, &chapter.url).await {

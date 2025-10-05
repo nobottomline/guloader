@@ -222,10 +222,10 @@ impl Database {
     }
     
     // Chapter operations
-    pub async fn create_chapter(&self, chapter: &Chapter) -> Result<()> {
-        sqlx::query(
+    pub async fn create_or_get_chapter(&self, chapter: &Chapter) -> Result<Chapter> {
+        let result = sqlx::query(
             r#"
-            INSERT INTO chapters (id, manga_id, manga_title, title, number, url, page_count, file_size_bytes, status, downloaded_at, created_at, updated_at)
+            INSERT OR IGNORE INTO chapters (id, manga_id, manga_title, title, number, url, page_count, file_size_bytes, status, downloaded_at, created_at, updated_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             "#,
         )
@@ -243,8 +243,14 @@ impl Database {
         .bind(chapter.updated_at)
         .execute(&self.pool)
         .await?;
-        
-        Ok(())
+
+        if result.rows_affected() == 0 {
+            // Уже существует — вернем существующую запись
+            if let Some(existing) = self.get_chapter_by_manga_and_number(&chapter.manga_id, chapter.number).await? {
+                return Ok(existing);
+            }
+        }
+        Ok(chapter.clone())
     }
     
     pub async fn get_chapters_by_manga_id(&self, manga_id: &str) -> Result<Vec<Chapter>> {
