@@ -453,6 +453,12 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool) -> Resul
     let mut failed_downloads = 0;
     
     for manga in &all_manga {
+        // Пропускаем временные манги с некорректными URL
+        if manga.url == "temp" || manga.url.is_empty() || !manga.url.starts_with("http") {
+            debug!("⏭️ Skipping temporary/invalid manga: {} (URL: {})", manga.title, manga.url);
+            continue;
+        }
+        
         info!("📖 Monitoring manga: {}", manga.title);
         
         // Получаем конфигурацию сайта
