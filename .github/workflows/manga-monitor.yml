@@ -6,9 +6,8 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch: # Позволяет запускать вручную
   push:
-    branches: [ main ]
-    paths:
-      - 'config.toml'
+    branches: [ '**' ]
+    # Без paths: запускать на любой измененный файл в любой ветке
 
 jobs:
   monitor:
