@@ -50,7 +50,7 @@ jobs:
       run: |
         if [ -n "$(git status --porcelain)" ]; then
           git add .
-          COMMIT_MSG="🤖 Hourly Catalog: $(date '+%Y-%m-%d %H:%M:%S UTC')\n\n$(git status --porcelain | head -20)\nRun ID: ${{ github.run_id }}"
+          COMMIT_MSG="🤖 Почасовая проверка каталога: $(date '+%Y-%m-%d %H:%M:%S UTC')\n\n$(git status --porcelain | head -20)\nRun ID: ${{ github.run_id }}"
           git commit -m "$COMMIT_MSG"
           git push
         else
