@@ -163,7 +163,7 @@ GitHub Actions настроен для автоматического запус
 
 ```
 📊 Monitoring cycle completed:
-   🆕 New chapters found: 5
+   🆕 New chapters found: 6
    ⬇️ Chapters downloaded: 3
    ❌ Failed downloads: 2
 ```
