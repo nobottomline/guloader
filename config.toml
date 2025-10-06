@@ -9,23 +9,6 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.madara.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
 [sites.tecno]
 name = "Tecno Moon"
 base_url = "https://tecno-moon.xyz"
@@ -58,6 +41,23 @@ chapter_title = ".chapternum"
 chapter_url = ".eph-num a"
 image_container = ".reader-main"
 image_url = ".reader-main img"
+next_page = ".nav-next a"
+
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.madara.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
 next_page = ".nav-next a"
 
 [sites.thunder]
@@ -620,4 +620,10 @@ active = true
 title = "My Lucky Encounter From The Game Turned Into Reality"
 site = "tecno"
 url = "https://tecno-moon.xyz/manga/my-lucky-encounter-from-the-game-turned-into-reality-2/"
+active = true
+
+[[manga]]
+title = "After Transmigrating into the Cyberpunk Game, I Defeated the BOSS and Successfully Rose to the Top"
+site = "eros"
+url = "https://eros-moon.xyz/manga/after-transmigrating-into-the-cyberpunk-game-i-defeated-the-boss-and-successfully-rose-to-the-top/"
 active = true
