@@ -59,7 +59,7 @@ enum Commands {
         /// Automatically commit downloaded files to git
         #[arg(long)]
         auto_commit: bool,
-        /// Limit number of manga to process (for load distribution)
+        /// Limit number of chapter downloads per run (0 = no limit)
         #[arg(long, default_value = "0")]
         limit: usize,
     },
@@ -88,7 +88,7 @@ enum Commands {
         /// Добавить найденные манги в config.toml (в секцию [[manga]])
         #[arg(long = "cfg", help = "Добавить найденные манги в config.toml")] 
         add_to_cfg: bool,
-        /// Limit number of manga to process (for load distribution)
+        /// Limit number of chapter downloads per run (0 = no limit)
         #[arg(long, default_value = "0")]
         limit: usize,
     },
@@ -473,14 +473,8 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool, limit: u
     let scanner_registry = ScannerRegistry::new();
     let downloader_registry = DownloaderRegistry::new();
     
-    // Получаем все манги из конфига
-    let mut all_manga = db.get_all_manga().await?;
-    
-    // Применяем ограничение если указано
-    if limit > 0 {
-        info!("📊 Limiting processing to {} manga for load distribution", limit);
-        all_manga.truncate(limit);
-    }
+    // Получаем все манги из БД (сканируем все, ограничиваем только скачивания)
+    let all_manga = db.get_all_manga().await?;
     
     let mut new_chapters_found = 0;
     let mut chapters_downloaded = 0;
@@ -523,8 +517,12 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool, limit: u
                     info!("🆕 Found {} new chapters for manga: {}", new_chapters.len(), manga.title);
                     new_chapters_found += new_chapters.len();
                     
-                    // Скачиваем новые главы
+                    // Скачиваем новые главы, ограничивая общее число скачиваний
                     for chapter in new_chapters {
+                        if limit > 0 && chapters_downloaded >= limit {
+                            debug!("⏸️ Download limit reached ({}), skipping remaining for this run", limit);
+                            break;
+                        }
                         info!("⬇️ Downloading new chapter: {} (Chapter {})", chapter.title, chapter.number);
                         
                         // Сначала сохраняем главу в базу данных (без дублей)
@@ -569,6 +567,10 @@ async fn run_monitor(config: &Config, db: &Database, auto_commit: bool, limit: u
             .collect::<Vec<_>>();
         
         for chapter in failed_chapters {
+            if limit > 0 && chapters_downloaded >= limit {
+                debug!("⏸️ Download limit reached ({}), stop retrying this run", limit);
+                break;
+            }
             info!("🔄 Retrying failed chapter: {}", chapter.title);
             
             match downloader_registry.download_chapter(config, db, &chapter.url).await {
@@ -628,21 +630,16 @@ async fn run_check(config_path: &str, config: &Config, db: &Database, site_filte
         None => config.sites.iter().collect(),
     };
 
+    let mut chapters_downloaded: usize = 0;
+
     for (site_name, site_cfg) in site_entries {
         if let Some(checker) = registry.get_checker(site_name) {
             info!("🌐 Checking catalog for site: {} ({})", site_name, site_cfg.base_url);
             let entries = checker.fetch_first_page(site_cfg).await?;
             let mut added = 0usize;
-            
-            // Применяем ограничение если указано
-            let entries_to_process = if limit > 0 {
-                info!("📊 Limiting catalog processing to {} entries for load distribution", limit);
-                entries.into_iter().take(limit).collect()
-            } else {
-                entries
-            };
-            
-            for entry in entries_to_process {
+
+            // Обрабатываем все записи каталога; ограничиваем только число СКАЧИВАНИЙ глав
+            for entry in entries {
                 let exists_in_db = db.get_manga_by_url(&entry.url).await?.is_some();
 
                 // При --cfg записываем в config.toml независимо от наличия в БД (без дублей)
@@ -684,14 +681,30 @@ async fn run_check(config_path: &str, config: &Config, db: &Database, site_filte
                 info!("➕ Added manga to DB from catalog: {}", entry.title);
 
                 if download_all {
+                    // Если достигли лимит скачиваний — пропускаем скачивания, но продолжаем обработку каталога
+                    if limit > 0 && chapters_downloaded >= limit {
+                        info!("⏸️ Download limit reached ({}), skipping further downloads this run", limit);
+                        continue;
+                    }
                     let scanner_registry = registry::ScannerRegistry::new();
                     scanner_registry.scan_manga(config, db, &manga.id).await?;
 
                     let chapters = db.get_chapters_by_manga_id(&manga.id).await?;
                     let downloader_registry = registry::DownloaderRegistry::new();
                     for chapter in chapters {
+                        if limit > 0 && chapters_downloaded >= limit {
+                            debug!("⏸️ Download limit reached ({}), stop downloading more chapters", limit);
+                            break;
+                        }
                         if chapter.status == crate::models::ChapterStatus::Downloaded { continue; }
-                        let _ = downloader_registry.download_chapter_to_scans(config, db, &chapter).await;
+                        match downloader_registry.download_chapter_to_scans(config, db, &chapter).await {
+                            Ok(_) => {
+                                chapters_downloaded += 1;
+                            }
+                            Err(e) => {
+                                warn!("❌ Failed to download {} - {}: {}", manga.title, chapter.title, e);
+                            }
+                        }
                     }
                 }
             }

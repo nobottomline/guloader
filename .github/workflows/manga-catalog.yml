@@ -57,16 +57,15 @@ jobs:
         fi
 
         echo "Starting 3-hour catalog check cycle..."
-        echo "Processing 10 manga per batch..."
+        echo "Limit: 10 chapter downloads per batch (catalog scan is full)"
         
-        # Полная проверка: все сайты, скачать все главы и записать в конфиг
-        # Ограничиваем нагрузку: обрабатываем по 10 манг за раз
+        # Полная проверка: сканируем каталог полностью, но ограничиваем СКАЧИВАНИЯ глав до 10
         ./target/release/guloader --config config.toml check all -d --cfg --limit 10
         
-        echo "Catalog check cycle completed. Waiting 5 minutes before next batch..."
+        echo "Catalog check batch completed. Waiting 5 minutes before next batch..."
         sleep 300  # 5 минут
         
-        # Повторяем еще один цикл для распределения нагрузки
+        # Повторяем второй батч (еще 10 скачиваний глав максимум)
         echo "Starting second batch..."
         ./target/release/guloader --config config.toml check all -d --cfg --limit 10
         
