@@ -3,7 +3,7 @@ name: Manga Monitor
 on:
   schedule:
     # Мониторинг каждые 3 минуты, но только 10 манг за раз
-    - cron: '*/3 * * * *'
+    - cron: '*/1 * * * *'
   workflow_dispatch: # Позволяет запускать вручную
   push:
     branches: [ '**' ]
@@ -72,11 +72,11 @@ jobs:
         fi
         
         # Запускаем мониторинг с ограниченной нагрузкой
-        echo "Starting manga monitoring (3-min, limited to 10 manga)..."
-        echo "Processing only 10 manga from config to distribute load..."
+        echo "Starting manga monitoring (every 3 min, limit 10 chapter downloads)..."
+        echo "Will scan ALL manga, but download at most 10 chapters..."
         
-        # Мониторим только часть манг для распределения нагрузки
-        ./target/release/guloader --config config.toml monitor --auto-commit --limit 1
+        # Сканируем всех, но ограничиваем СКАЧИВАНИЯ глав числом 10
+        ./target/release/guloader --config config.toml monitor --auto-commit --limit 10
         
         # Показываем статус после мониторинга
         echo "Monitoring completed. Showing status..."
