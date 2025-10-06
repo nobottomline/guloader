@@ -9,23 +9,6 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
 [sites.thunder]
 name = "Thunderscans"
 base_url = "https://en-thunderscans.com"
@@ -75,6 +58,23 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -1004,4 +1004,58 @@ active = true
 title = "I’m Not That Kind of Talent"
 site = "eros"
 url = "https://eros-moon.xyz/manga/im-not-that-kind-of-talent/"
+active = true
+
+[[manga]]
+title = "Terminally-Ill Genius Dark Knight"
+site = "eros"
+url = "https://eros-moon.xyz/manga/terminally-ill-genius-dark-knight/"
+active = true
+
+[[manga]]
+title = "What a Bountiful Harvest, Demon Lord!"
+site = "eros"
+url = "https://eros-moon.xyz/manga/what-a-bountiful-harvest-demon-lord/"
+active = true
+
+[[manga]]
+title = "The Illegitimate Who Devours Weapons"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-illegitimate-who-devours-weapons/"
+active = true
+
+[[manga]]
+title = "The Ultimate Shut-In"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-ultimate-shut-in/"
+active = true
+
+[[manga]]
+title = "Regressing with the King’s Power"
+site = "eros"
+url = "https://eros-moon.xyz/manga/regressing-with-the-kings-power/"
+active = true
+
+[[manga]]
+title = "The Fox-Eyed Villain of the Demon Academy"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-fox-eyed-villain-of-the-demon-academy/"
+active = true
+
+[[manga]]
+title = "Dominating with the Price Collapse System"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/dominating-with-the-price-collapse-system/"
+active = true
+
+[[manga]]
+title = "Return of the Calamity-Class Death Knight"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/return-of-the-calamity-class-death-knight/"
+active = true
+
+[[manga]]
+title = "Unparalleled in the Online Gaming World (Remake)"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/unparalleled-in-the-online-gaming-world-remake/"
 active = true
