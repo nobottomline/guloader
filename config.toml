@@ -26,23 +26,6 @@ image_container = ".reader-main"
 image_url = ".reader-main img"
 next_page = ".nav-next a"
 
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.madara.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
 [sites.thunder]
 name = "Thunderscans"
 base_url = "https://en-thunderscans.com"
@@ -75,6 +58,23 @@ chapter_title = ".chapternum"
 chapter_url = ".eph-num a"
 image_container = ".reader-main"
 image_url = ".reader-main img"
+next_page = ".nav-next a"
+
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.madara.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -632,4 +632,376 @@ active = true
 title = "The Youngest Son of the Eunhae Merchant Group"
 site = "eros"
 url = "https://eros-moon.xyz/manga/the-youngest-son-of-the-eunhae-merchant-group/"
+active = true
+
+[[manga]]
+title = "Bloodhound’s Regression Instinct"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/bloodhounds-regression-instinct/"
+active = true
+
+[[manga]]
+title = "Star Instructor, Master Baek"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/star-instructor-master-baek/"
+active = true
+
+[[manga]]
+title = "The Heavenly Demon Can’t Live a Normal Life"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/the-heavenly-demon-cant-live-a-normal-life/"
+active = true
+
+[[manga]]
+title = "Genius Martial Arts Trainer"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/genius-martial-arts-trainer/"
+active = true
+
+[[manga]]
+title = "Sword God from the Ruined World"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/sword-god-from-the-ruined-world/"
+active = true
+
+[[manga]]
+title = "Youngest Scion of the Mages"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/youngest-scion-of-the-mages/"
+active = true
+
+[[manga]]
+title = "I Quit the Hero’s Party"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/i-quit-the-heros-party/"
+active = true
+
+[[manga]]
+title = "Regressor of the Fallen family"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/regressor-of-the-fallen-family/"
+active = true
+
+[[manga]]
+title = "The Indomitable Martial King"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/the-indomitable-martial-king/"
+active = true
+
+[[manga]]
+title = "Chronicles of the Demon Faction"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/chronicles-of-the-demon-faction/"
+active = true
+
+[[manga]]
+title = "Worthless Regression"
+site = "eros"
+url = "https://eros-moon.xyz/manga/worthless-regression/"
+active = true
+
+[[manga]]
+title = "Standard of Reincarnation"
+site = "eros"
+url = "https://eros-moon.xyz/manga/standard-of-reincarnation/"
+active = true
+
+[[manga]]
+title = "Reincarnation of the Fist King"
+site = "eros"
+url = "https://eros-moon.xyz/manga/reincarnation-of-the-fist-king/"
+active = true
+
+[[manga]]
+title = "The Terminally Ill Young Master of the Baek Clan"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-terminally-ill-young-master-of-the-baek-clan/"
+active = true
+
+[[manga]]
+title = "Genius Prismatic Mage"
+site = "eros"
+url = "https://eros-moon.xyz/manga/genius-prismatic-mage/"
+active = true
+
+[[manga]]
+title = "The Knight King Who Returned with a God"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-knight-king-who-returned-with-a-god/"
+active = true
+
+[[manga]]
+title = "The Heavenly Demon Can’t Live a Normal Life"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-heavenly-demon-cant-live-a-normal-life/"
+active = true
+
+[[manga]]
+title = "Myst, Might, Mayhem"
+site = "eros"
+url = "https://eros-moon.xyz/manga/myst-might-mayhem/"
+active = true
+
+[[manga]]
+title = "Breakers"
+site = "eros"
+url = "https://eros-moon.xyz/manga/breakers/"
+active = true
+
+[[manga]]
+title = "Former S-rank Adventurers Slow Life"
+site = "eros"
+url = "https://eros-moon.xyz/manga/former-s-rank-adventurers-slow-life/"
+active = true
+
+[[manga]]
+title = "Office Worker in the Ice Age Apocalypse"
+site = "eros"
+url = "https://eros-moon.xyz/manga/office-worker-in-the-ice-age-apocalypse/"
+active = true
+
+[[manga]]
+title = "God-Tier Extra’s Ultimate Guide"
+site = "eros"
+url = "https://eros-moon.xyz/manga/god-tier-extras-ultimate-guide/"
+active = true
+
+[[manga]]
+title = "Reset Life of a Hardcore Gamer"
+site = "eros"
+url = "https://eros-moon.xyz/manga/reset-life-of-a-hardcore-gamer/"
+active = true
+
+[[manga]]
+title = "Starting from Level 1: I’ll Defeat All Reincarnated Monsters in My Secret Dungeon"
+site = "eros"
+url = "https://eros-moon.xyz/manga/starting-from-level-1-ill-defeat-all-reincarnated-monsters-in-my-secret-dungeon/"
+active = true
+
+[[manga]]
+title = "Get Some Honey By Copying Skills"
+site = "eros"
+url = "https://eros-moon.xyz/manga/get-some-honey-by-copying-skills/"
+active = true
+
+[[manga]]
+title = "The Indomitable Martial King"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-indomitable-martial-king/"
+active = true
+
+[[manga]]
+title = "The Magic Tower’s Problem Child"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-magic-towers-problem-child/"
+active = true
+
+[[manga]]
+title = "Mood Disorder"
+site = "eros"
+url = "https://eros-moon.xyz/manga/mood-disorder/"
+active = true
+
+[[manga]]
+title = "Genius Martial Arts Trainer"
+site = "eros"
+url = "https://eros-moon.xyz/manga/genius-martial-arts-trainer/"
+active = true
+
+[[manga]]
+title = "The Sword God From a Fallen World"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-sword-god-from-a-fallen-world/"
+active = true
+
+[[manga]]
+title = "Return of the SSS-Class Ranker"
+site = "eros"
+url = "https://eros-moon.xyz/manga/return-of-the-sss-class-ranker/"
+active = true
+
+[[manga]]
+title = "Start by Signing in and Obtaining the Ancient Divine Body"
+site = "eros"
+url = "https://eros-moon.xyz/manga/start-by-signing-in-and-obtaining-the-ancient-divine-body/"
+active = true
+
+[[manga]]
+title = "Regressor of the Fallen family"
+site = "eros"
+url = "https://eros-moon.xyz/manga/regressor-of-the-fallen-family/"
+active = true
+
+[[manga]]
+title = "The Only One Who Leveled Down: Awakened Beyond the System"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-only-one-who-leveled-down-awakened-beyond-the-system/"
+active = true
+
+[[manga]]
+title = "Infinite Awakening"
+site = "eros"
+url = "https://eros-moon.xyz/manga/infinite-awakening/"
+active = true
+
+[[manga]]
+title = "Chronicles of the Demon Faction"
+site = "eros"
+url = "https://eros-moon.xyz/manga/chronicles-of-the-demon-faction/"
+active = true
+
+[[manga]]
+title = "The Sword God from a Ruined World"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-sword-god-from-a-ruined-world/"
+active = true
+
+[[manga]]
+title = "The Strongest Assassin Levels up in Another World"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-strongest-assassin-levels-up-in-another-world/"
+active = true
+
+[[manga]]
+title = "Subscribing to the Transcendent’s Channel"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/subscribing-to-the-transcendents-channel/"
+active = true
+
+[[manga]]
+title = "Fighting Ward"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/fighting-ward/"
+active = true
+
+[[manga]]
+title = "Cerberus"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/cerberus/"
+active = true
+
+[[manga]]
+title = "Return of The Genius Swordmaster"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/return-of-the-genius-swordmaster/"
+active = true
+
+[[manga]]
+title = "Starting as the Black Dragon Boss, I Am Invincible!"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/0086250808-starting-as-the-black-dragon-boss-i-am-invincible/"
+active = true
+
+[[manga]]
+title = "The Expelled Support Mage Became the Strongest Sage"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-expelled-support-mage-became-the-strongest-sage/"
+active = true
+
+[[manga]]
+title = "Winterbell"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/winter-bell/"
+active = true
+
+[[manga]]
+title = "The Bottom-Rank Knight Dominates with the Forbidden Flame"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-bottom-rank-knight-dominates-with-the-forbidden-flame/"
+active = true
+
+[[manga]]
+title = "Aristocrat’s Revenge"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/aristocrats-revenge/"
+active = true
+
+[[manga]]
+title = "The Reset Life of a Game Addict"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-reset-life-of-a-game-addict/"
+active = true
+
+[[manga]]
+title = "After Being Reincarnated, I Will Reach the Top With My Divergent Cheats"
+site = "madara"
+url = "https://madarascans.com/series/after-being-reincarnated-i-will-reach-the-top-with-my-divergent-cheats/"
+active = true
+
+[[manga]]
+title = "Mr. Zombie"
+site = "madara"
+url = "https://madarascans.com/series/mr-zombie/"
+active = true
+
+[[manga]]
+title = "The strongest assassin levels up in another world"
+site = "madara"
+url = "https://madarascans.com/series/the-strongest-assassin-levels-up-in-another-world/"
+active = true
+
+[[manga]]
+title = "Doomsday Arrival: Evolution into the Crimson King"
+site = "madara"
+url = "https://madarascans.com/series/doomsday-arrival-evolution-into-the-crimson-king/"
+active = true
+
+[[manga]]
+title = "The Low-Level Knight, Unrivaled by Forbidden Flames"
+site = "madara"
+url = "https://madarascans.com/series/the-low-level-knight-unrivaled-by-forbidden-flames/"
+active = true
+
+[[manga]]
+title = "Back from the Abyss: I Am the Disaster"
+site = "madara"
+url = "https://madarascans.com/series/back-from-the-abyss-i-am-the-disaster/"
+active = true
+
+[[manga]]
+title = "Battle Aristocracy"
+site = "madara"
+url = "https://madarascans.com/series/battle-aristocracy/"
+active = true
+
+[[manga]]
+title = "The Sword God from the ruined world"
+site = "madara"
+url = "https://madarascans.com/series/the-sword-god-from-the-ruined-world/"
+active = true
+
+[[manga]]
+title = "Artemis"
+site = "madara"
+url = "https://madarascans.com/series/artemis/"
+active = true
+
+[[manga]]
+title = "Cerberus"
+site = "madara"
+url = "https://madarascans.com/series/cerberus/"
+active = true
+
+[[manga]]
+title = "The Divine Surgeon"
+site = "madara"
+url = "https://madarascans.com/series/the-divine-surgeon/"
+active = true
+
+[[manga]]
+title = "Trapped in a Crazy World as an Extra"
+site = "madara"
+url = "https://madarascans.com/series/trapped-in-a-crazy-world-as-an-extra/"
+active = true
+
+[[manga]]
+title = "Maxed Talent Player"
+site = "madara"
+url = "https://madarascans.com/series/maxed-talent-player/"
+active = true
+
+[[manga]]
+title = "I’m Not That Kind of Talent"
+site = "eros"
+url = "https://eros-moon.xyz/manga/im-not-that-kind-of-talent/"
 active = true
