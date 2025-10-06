@@ -47,6 +47,14 @@ jobs:
     - name: Build
       run: cargo build --release
 
+    - name: Configure Git
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "github-actions[bot]"
+        git config --global --add safe.directory "${{ github.workspace }}"
+        git config --local pull.rebase true
+        git config --local rebase.autoStash true
+
     - name: Run full catalog check (every 30 minutes)
       run: |
         mkdir -p data downloads scans
@@ -61,6 +69,10 @@ jobs:
         
         # Полная проверка: сканируем каталог полностью, но ограничиваем СКАЧИВАНИЯ глав до 20
         ./target/release/guloader --config config.toml check all -d --cfg --limit 20
+        
+        # Показываем статус после проверки каталога
+        echo "Catalog check completed. Showing status..."
+        ./target/release/guloader --config config.toml status
         
         # Очищаем только временные файлы, НЕ удаляем downloads/
         echo "Cleaning up temporary files..."
@@ -91,4 +103,11 @@ jobs:
           echo "No changes to commit"
         fi
 
-
+    - name: Upload logs
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: error-logs
+        path: |
+          data/
+          *.log
