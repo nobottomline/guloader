@@ -2,8 +2,8 @@ name: Manga Catalog Full Check
 
 on:
   schedule:
-    # Каждые 3 часа (0:00, 3:00, 6:00, 9:00, 12:00, 15:00, 18:00, 21:00)
-    - cron: '0 */1 * * *'
+    # Каждые 30 минут
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -47,7 +47,7 @@ jobs:
     - name: Build
       run: cargo build --release
 
-    - name: Run full catalog check (every 10 hours)
+    - name: Run full catalog check (every 30 minutes)
       run: |
         mkdir -p data downloads scans
 
@@ -56,18 +56,11 @@ jobs:
           ./target/release/guloader --config config.toml init
         fi
 
-        echo "Starting 3-hour catalog check cycle..."
-        echo "Limit: 10 chapter downloads per batch (catalog scan is full)"
+        echo "Starting 30-minute catalog check cycle..."
+        echo "Limit: 20 chapter downloads per batch (catalog scan is full)"
         
-        # Полная проверка: сканируем каталог полностью, но ограничиваем СКАЧИВАНИЯ глав до 10
-        ./target/release/guloader --config config.toml check all -d --cfg --limit 10
-        
-        echo "Catalog check batch completed. Waiting 5 minutes before next batch..."
-        sleep 300  # 5 минут
-        
-        # Повторяем второй батч (еще 10 скачиваний глав максимум)
-        echo "Starting second batch..."
-        ./target/release/guloader --config config.toml check all -d --cfg --limit 10
+        # Полная проверка: сканируем каталог полностью, но ограничиваем СКАЧИВАНИЯ глав до 20
+        ./target/release/guloader --config config.toml check all -d --cfg --limit 20
         
         # Очищаем только временные файлы, НЕ удаляем downloads/
         echo "Cleaning up temporary files..."
