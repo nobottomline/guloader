@@ -2,8 +2,8 @@ name: Manga Monitor
 
 on:
   schedule:
-    # Мониторинг каждые 3 минуты, но только 10 манг за раз
-    - cron: '*/1 * * * *'
+    # Мониторинг каждые 10 минут, но только 10 скачиваний за раз
+    - cron: '*/10 * * * *'
   workflow_dispatch: # Позволяет запускать вручную
   push:
     branches: [ '**' ]
@@ -60,7 +60,7 @@ jobs:
         git config --local pull.rebase true
         git config --local rebase.autoStash true
     
-    - name: Run manga monitoring (5-min, limited load)
+    - name: Run manga monitoring (10-min, limited load)
       run: |
         # Создаем директории если их нет
         mkdir -p data downloads scans
@@ -72,7 +72,7 @@ jobs:
         fi
         
         # Запускаем мониторинг с ограниченной нагрузкой
-        echo "Starting manga monitoring (every 3 min, limit 10 chapter downloads)..."
+        echo "Starting manga monitoring (every 10 min, limit 10 chapter downloads)..."
         echo "Will scan ALL manga, but download at most 10 chapters..."
         
         # Сканируем всех, но ограничиваем СКАЧИВАНИЯ глав числом 10
