@@ -3,7 +3,7 @@ name: Manga Monitor
 on:
   schedule:
     # Мониторинг каждые 3 минуты, но только 10 манг за раз
-    - cron: '*/3 * * * *'
+    - cron: '*/1 * * * *'
   workflow_dispatch: # Позволяет запускать вручную
   push:
     branches: [ '**' ]

@@ -3,7 +3,7 @@ name: Manga Catalog Full Check
 on:
   schedule:
     # Каждые 3 часа (0:00, 3:00, 6:00, 9:00, 12:00, 15:00, 18:00, 21:00)
-    - cron: '0 */3 * * *'
+    - cron: '0 */1 * * *'
   workflow_dispatch:
 
 jobs:
