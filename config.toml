@@ -9,40 +9,6 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.madara.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
 [sites.thunder]
 name = "Thunderscans"
 base_url = "https://en-thunderscans.com"
@@ -69,6 +35,40 @@ rate_limit_ms = 1500
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
 [sites.eros.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.madara.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -1136,4 +1136,82 @@ active = true
 title = "How to Live as an Illegal Healer"
 site = "thunder"
 url = "https://en-thunderscans.com/comics/how-to-live-as-an-illegal-healer/"
+active = true
+
+[[manga]]
+title = "The Cursed Skill “Undeadification” Made Me the Ultimate Invincible Necromancer"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-cursed-skill-undeadification-made-me-the-ultimate-invincible-necromancer/"
+active = true
+
+[[manga]]
+title = "The Namgung Clan’s Great Sage"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-namgung-clans-great-sage/"
+active = true
+
+[[manga]]
+title = "Trapped in a Crazy World as an Extra"
+site = "eros"
+url = "https://eros-moon.xyz/manga/trapped-in-a-crazy-world-as-an-extra/"
+active = true
+
+[[manga]]
+title = "Holy Money"
+site = "eros"
+url = "https://eros-moon.xyz/manga/holy-money/"
+active = true
+
+[[manga]]
+title = "I Regressed, But the World Isn’t Ruined"
+site = "eros"
+url = "https://eros-moon.xyz/manga/i-regressed-but-the-world-isnt-ruined/"
+active = true
+
+[[manga]]
+title = "How Is the Hero’s Name Just “Aaaah”?"
+site = "eros"
+url = "https://eros-moon.xyz/manga/how-is-the-heros-name-just-aaaah/"
+active = true
+
+[[manga]]
+title = "Heavenly Martial Artist"
+site = "eros"
+url = "https://eros-moon.xyz/manga/heavenly-martial-artist/"
+active = true
+
+[[manga]]
+title = "Happy Face: From Slave to Arena Legend"
+site = "eros"
+url = "https://eros-moon.xyz/manga/happy-face-from-slave-to-arena-legend/"
+active = true
+
+[[manga]]
+title = "Charge! Yongma Chicken"
+site = "eros"
+url = "https://eros-moon.xyz/manga/charge-yongma-chicken/"
+active = true
+
+[[manga]]
+title = "Artemis"
+site = "eros"
+url = "https://eros-moon.xyz/manga/artemis/"
+active = true
+
+[[manga]]
+title = "Doomsday Game: Rise of the Villain"
+site = "madara"
+url = "https://madarascans.com/series/doomsday-game-rise-of-the-villain/"
+active = true
+
+[[manga]]
+title = "Stuck in the Tower"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/stuck-in-the-tower/"
+active = true
+
+[[manga]]
+title = "Divine Ring Descends: The Strongest Otherworld"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/divine-ring-descends-the-strongest-otherworld/"
 active = true
