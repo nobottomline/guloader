@@ -9,6 +9,40 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.madara.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
+next_page = ".nav-next a"
+
 [sites.thunder]
 name = "Thunderscans"
 base_url = "https://en-thunderscans.com"
@@ -35,40 +69,6 @@ rate_limit_ms = 1500
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
 [sites.eros.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.madara.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -1214,4 +1214,106 @@ active = true
 title = "Divine Ring Descends: The Strongest Otherworld"
 site = "tecno"
 url = "https://tecno-moon.xyz/manga/divine-ring-descends-the-strongest-otherworld/"
+active = true
+
+[[manga]]
+title = "Hundred Wives: All Saintesses Call Me Husband"
+site = "eros"
+url = "https://eros-moon.xyz/manga/hundred-wives-all-saintesses-call-me-husband/"
+active = true
+
+[[manga]]
+title = "Back from the Abyss: I Am the Disaster"
+site = "eros"
+url = "https://eros-moon.xyz/manga/back-from-the-abyss-i-am-the-disaster/"
+active = true
+
+[[manga]]
+title = "Battle Aristocracy"
+site = "eros"
+url = "https://eros-moon.xyz/manga/battle-aristocracy/"
+active = true
+
+[[manga]]
+title = "Return of the Absolute Champion"
+site = "eros"
+url = "https://eros-moon.xyz/manga/return-of-the-absolute-champion/"
+active = true
+
+[[manga]]
+title = "The Billion-Luck Player"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-billion-luck-player/"
+active = true
+
+[[manga]]
+title = "Doomsday Game: Rise of the Villain"
+site = "eros"
+url = "https://eros-moon.xyz/manga/doomsday-game-rise-of-the-villain/"
+active = true
+
+[[manga]]
+title = "Office Worker Who Sees Fate"
+site = "eros"
+url = "https://eros-moon.xyz/manga/office-worker-who-sees-fate/"
+active = true
+
+[[manga]]
+title = "Starting as the Black Dragon Boss, I Am Invincible"
+site = "eros"
+url = "https://eros-moon.xyz/manga/starting-as-the-black-dragon-boss-i-am-invincible/"
+active = true
+
+[[manga]]
+title = "Subscribing To The Transcendent’s Channel"
+site = "eros"
+url = "https://eros-moon.xyz/manga/subscribing-to-the-transcendents-channel/"
+active = true
+
+[[manga]]
+title = "With My Price Deduction System, I Became Invincible"
+site = "eros"
+url = "https://eros-moon.xyz/manga/with-my-price-deduction-system-i-became-invincible/"
+active = true
+
+[[manga]]
+title = "The Reincarnation of the Forbidden Archmage"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-reincarnation-of-the-forbidden-archmage/"
+active = true
+
+[[manga]]
+title = "Return of The Genius Swordmaster"
+site = "eros"
+url = "https://eros-moon.xyz/manga/return-of-the-genius-swordmaster/"
+active = true
+
+[[manga]]
+title = "Honestly, This 13th Regression is Getting Tough"
+site = "eros"
+url = "https://eros-moon.xyz/manga/honestly-this-13th-regression-is-getting-tough/"
+active = true
+
+[[manga]]
+title = "Reincarnated With a Metal Bat ~Surviving the Monochrome Madness~"
+site = "eros"
+url = "https://eros-moon.xyz/manga/reincarnated-with-a-metal-bat-surviving-the-monochrome-madness/"
+active = true
+
+[[manga]]
+title = "Huashan Sect’s Greatest Genius of All Time"
+site = "eros"
+url = "https://eros-moon.xyz/manga/huashan-sects-greatest-genius-of-all-time/"
+active = true
+
+[[manga]]
+title = "Auto Hunting With My Clones"
+site = "eros"
+url = "https://eros-moon.xyz/manga/auto-hunting-with-my-clones/"
+active = true
+
+[[manga]]
+title = "Helmut: The Forsaken Child"
+site = "eros"
+url = "https://eros-moon.xyz/manga/helmut-the-forsaken-child/"
 active = true
