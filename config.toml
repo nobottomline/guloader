@@ -9,21 +9,21 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://en-thunderscans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
+[sites.eros]
+name = "Eros Moon"
+base_url = "https://eros-moon.xyz"
+scanner_type = "eros"
+downloader_type = "eros"
+rate_limit_ms = 1500
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.thunder.selectors]
+[sites.eros.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [sites.madara]
@@ -43,21 +43,21 @@ image_container = ".reading-content"
 image_url = ".reading-content img"
 next_page = ".nav-next a"
 
-[sites.eros]
-name = "Eros Moon"
-base_url = "https://eros-moon.xyz"
-scanner_type = "eros"
-downloader_type = "eros"
-rate_limit_ms = 1500
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.eros.selectors]
+[sites.thunder.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
 next_page = ".nav-next a"
 
 [sites.tecno]
@@ -1586,4 +1586,10 @@ active = true
 title = "Regressing as the Reincarnated Bastard of the Sword Clan"
 site = "tecno"
 url = "https://tecno-moon.xyz/manga/regressing-as-the-reincarnated-bastard-of-the-sword-clan/"
+active = true
+
+[[manga]]
+title = "The Gardener in a Hunter World"
+site = "madara"
+url = "https://madarascans.com/series/the-gardener-in-a-hunter-world/"
 active = true
