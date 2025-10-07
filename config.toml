@@ -9,40 +9,6 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
-[sites.eros]
-name = "Eros Moon"
-base_url = "https://eros-moon.xyz"
-scanner_type = "eros"
-downloader_type = "eros"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.eros.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
 [sites.thunder]
 name = "Thunderscans"
 base_url = "https://en-thunderscans.com"
@@ -75,6 +41,40 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.eros]
+name = "Eros Moon"
+base_url = "https://eros-moon.xyz"
+scanner_type = "eros"
+downloader_type = "eros"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.eros.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -1460,4 +1460,130 @@ active = true
 title = "The Delusional Hunter in Another World"
 site = "eros"
 url = "https://eros-moon.xyz/manga/the-delusional-hunter-in-another-world/"
+active = true
+
+[[manga]]
+title = "The Sword Master Who Travels Through Time"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-sword-master-who-travels-through-time/"
+active = true
+
+[[manga]]
+title = "The Death-Returning Demon King Player"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-death-returning-demon-king-player/"
+active = true
+
+[[manga]]
+title = "How to Live as a Civil Servant in Murim"
+site = "madara"
+url = "https://madarascans.com/series/how-to-live-as-a-civil-servant-in-murim/"
+active = true
+
+[[manga]]
+title = "Silvertown of Hell"
+site = "madara"
+url = "https://madarascans.com/series/silvertown-of-hell/"
+active = true
+
+[[manga]]
+title = "For The Strongest Dungeon"
+site = "madara"
+url = "https://madarascans.com/series/for-the-strongest-dungeon/"
+active = true
+
+[[manga]]
+title = "Eleceed"
+site = "eros"
+url = "https://eros-moon.xyz/manga/eleceed/"
+active = true
+
+[[manga]]
+title = "Leveling Up with the Gods"
+site = "eros"
+url = "https://eros-moon.xyz/manga/leveling-up-with-the-gods/"
+active = true
+
+[[manga]]
+title = "Omniscient Reader’s Viewpoint"
+site = "eros"
+url = "https://eros-moon.xyz/manga/omniscient-readers-viewpoint/"
+active = true
+
+[[manga]]
+title = "The Legendary Hero is an Academy Honors Student"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-legendary-hero-is-an-academy-honors-student/"
+active = true
+
+[[manga]]
+title = "The Regressed Mercenary’s Machinations"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-regressed-mercenarys-machinations/"
+active = true
+
+[[manga]]
+title = "Chronicles Of The Martial God’s Return"
+site = "eros"
+url = "https://eros-moon.xyz/manga/chronicles-of-the-martial-gods-return/"
+active = true
+
+[[manga]]
+title = "Survival Story of a Sword King in a Fantasy World"
+site = "eros"
+url = "https://eros-moon.xyz/manga/survival-story-of-a-sword-king-in-a-fantasy-world/"
+active = true
+
+[[manga]]
+title = "The Max-Level Player’s 100th Regression"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-max-level-players-100th-regression/"
+active = true
+
+[[manga]]
+title = "Surviving as a Genius on Borrowed Time"
+site = "eros"
+url = "https://eros-moon.xyz/manga/surviving-as-a-genius-on-borrowed-time/"
+active = true
+
+[[manga]]
+title = "Return of the Apocalypse-Class Death Knight"
+site = "eros"
+url = "https://eros-moon.xyz/manga/return-of-the-apocalypse-class-death-knight/"
+active = true
+
+[[manga]]
+title = "Regressing as the Reincarnated Bastard of the Sword Clan"
+site = "eros"
+url = "https://eros-moon.xyz/manga/regressing-as-the-reincarnated-bastard-of-the-sword-clan/"
+active = true
+
+[[manga]]
+title = "Dungeon Architect"
+site = "eros"
+url = "https://eros-moon.xyz/manga/dungeon-architect/"
+active = true
+
+[[manga]]
+title = "The Regressed Mercenary’s Machinations"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/the-regressed-mercenarys-machinations/"
+active = true
+
+[[manga]]
+title = "Survival Story of a Sword King in a Fantasy World"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/survival-story-of-a-sword-king-in-a-fantasy-world-2/"
+active = true
+
+[[manga]]
+title = "Surviving as a Genius on Borrowed Time"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/surviving-as-a-genius-on-borrowed-time/"
+active = true
+
+[[manga]]
+title = "Regressing as the Reincarnated Bastard of the Sword Clan"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/regressing-as-the-reincarnated-bastard-of-the-sword-clan/"
 active = true
