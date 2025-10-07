@@ -9,15 +9,15 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.eros]
-name = "Eros Moon"
-base_url = "https://eros-moon.xyz"
-scanner_type = "eros"
-downloader_type = "eros"
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
 rate_limit_ms = 1500
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.eros.selectors]
+[sites.tecno.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -43,6 +43,23 @@ image_container = ".reading-content"
 image_url = ".reading-content img"
 next_page = ".nav-next a"
 
+[sites.eros]
+name = "Eros Moon"
+base_url = "https://eros-moon.xyz"
+scanner_type = "eros"
+downloader_type = "eros"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.eros.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
 [sites.thunder]
 name = "Thunderscans"
 base_url = "https://en-thunderscans.com"
@@ -58,23 +75,6 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -1592,4 +1592,40 @@ active = true
 title = "The Gardener in a Hunter World"
 site = "madara"
 url = "https://madarascans.com/series/the-gardener-in-a-hunter-world/"
+active = true
+
+[[manga]]
+title = "Primordial Ten Fiends: Others Tame Beasts, I Tame Beast Girls"
+site = "madara"
+url = "https://madarascans.com/series/primordial-ten-fiends-others-tame-beasts-i-tame-beast-girls/"
+active = true
+
+[[manga]]
+title = "Anti-hero at the bottom of the job caste system"
+site = "madara"
+url = "https://madarascans.com/series/anti-hero-at-the-bottom-of-the-job-caste-system/"
+active = true
+
+[[manga]]
+title = "Smiling Boxer"
+site = "madara"
+url = "https://madarascans.com/series/smiling-boxer/"
+active = true
+
+[[manga]]
+title = "Conquering Dungeons With Copy Paste!"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/conquering-dungeons-with-copy-paste/"
+active = true
+
+[[manga]]
+title = "44th period survival class"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/44th-period-survival-class/"
+active = true
+
+[[manga]]
+title = "Sovereign of the Infinite Clones"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/sovereign-of-the-infinite-clones/"
 active = true
