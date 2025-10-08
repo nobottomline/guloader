@@ -3,7 +3,7 @@ name: Manga Catalog Full Check
 on:
   schedule:
     # Каждые 30 минут
-    - cron: '*/30 * * * *'
+    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -24,47 +24,28 @@ jobs:
       with:
         components: rustfmt, clippy
 
-    # Отключаем кэш cargo чтобы сэкономить место на диске
-    # - name: Cache cargo
-    #   uses: actions/cache@v4
-    #   with:
-    #     path: |
-    #       ~/.cargo/registry
-    #       ~/.cargo/git
-    #       target
-    #     key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    - name: Cache cargo
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-    - name: Clean up disk space (aggressive)
+    - name: Clean up disk space
       run: |
-        # Максимально агрессивная очистка диска
+        # Агрессивная очистка диска перед началом
         sudo rm -rf /tmp/*
         sudo rm -rf ~/.cargo/registry/cache/*
-        sudo rm -rf ~/.cargo/registry/src/*
-        sudo rm -rf ~/.cargo/git/db/*
         sudo rm -rf /var/cache/*
         sudo rm -rf /var/log/*
-        sudo rm -rf /home/runner/.cache/*
-        sudo rm -rf /usr/share/doc/*
-        sudo rm -rf /usr/share/man/*
-        sudo rm -rf /usr/share/locale/*
-        sudo rm -rf /usr/share/info/*
         sudo apt-get clean
         sudo apt-get autoclean
-        sudo apt-get autoremove -y
-        # Очищаем ВСЕ скачанные файлы чтобы освободить максимум места
-        rm -rf downloads/* 2>/dev/null || true
-        rm -rf scans/* 2>/dev/null || true
-        # Очищаем кэш cargo полностью
-        rm -rf ~/.cargo/registry/cache/* 2>/dev/null || true
-        rm -rf ~/.cargo/git/db/* 2>/dev/null || true
         df -h
 
-    - name: Build (optimized for space)
-      run: |
-        # Очищаем target перед сборкой
-        rm -rf target/
-        # Сборка с оптимизацией для экономии места
-        cargo build --release --offline || cargo build --release
+    - name: Build
+      run: cargo build --release
 
     - name: Configure Git
       run: |
@@ -83,30 +64,25 @@ jobs:
           ./target/release/guloader --config config.toml init
         fi
 
-        echo "Starting 30-minute catalog check cycle..."
-        echo "Limit: 20 chapter downloads per batch (catalog scan is full)"
+        echo "Starting 15-minute catalog check cycle..."
+        echo "Catalog update only: scanning catalogs and adding new manga to config.toml (no downloads)"
         
         # Полная проверка: сканируем каталог полностью, но ограничиваем СКАЧИВАНИЯ глав до 20
-        ./target/release/guloader --config config.toml check all -d --cfg --limit 20
+        ./target/release/guloader --config config.toml check --cfg 
         
         # Показываем статус после проверки каталога
         echo "Catalog check completed. Showing status..."
         ./target/release/guloader --config config.toml status
         
-        # Максимальная очистка после выполнения
-        echo "Cleaning up all temporary files..."
+        # Очищаем только временные файлы, НЕ удаляем downloads/
+        echo "Cleaning up temporary files..."
         find data/ -name "*.db-journal" -delete 2>/dev/null || true
-        # Удаляем ВСЕ скачанные файлы чтобы освободить максимум места
-        rm -rf downloads/* 2>/dev/null || true
-        rm -rf scans/* 2>/dev/null || true
-        # Удаляем target чтобы освободить место
-        rm -rf target/ 2>/dev/null || true
+        find scans/ -type f -mtime +1 -delete 2>/dev/null || true
+        # НЕ удаляем downloads/ - они должны сохраняться!
         
         # Дополнительная очистка системных файлов
         sudo rm -rf /tmp/*
         sudo rm -rf ~/.cargo/registry/cache/*
-        sudo rm -rf ~/.cargo/git/db/*
-        sudo rm -rf /home/runner/.cache/*
         df -h
 
     - name: Commit changes
