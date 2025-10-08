@@ -2121,3 +2121,15 @@ title = "The Demon in Human Form"
 site = "thunder"
 url = "https://en-thunderscans.com/comics/the-demon-in-human-form/"
 active = true
+
+[[manga]]
+title = "I Am the Fated Villain"
+site = "eros"
+url = "https://eros-moon.xyz/manga/i-am-the-fated-villain/"
+active = true
+
+[[manga]]
+title = "Bad Born Blood"
+site = "eros"
+url = "https://eros-moon.xyz/manga/bad-born-blood/"
+active = true
