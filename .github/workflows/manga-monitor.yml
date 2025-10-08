@@ -27,7 +27,7 @@ jobs:
       with:
         components: rustfmt, clippy
     
-    - name: Cache cargo dependencies
+    - name: Cache cargo dependencies (limited)
       uses: actions/cache@v4
       with:
         path: |
@@ -38,22 +38,29 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-cargo-
     
-    - name: Clean up disk space
+    - name: Clean up disk space (aggressive)
       run: |
-        # Агрессивная очистка диска перед началом
+        # Максимально агрессивная очистка диска
         sudo rm -rf /tmp/*
         sudo rm -rf ~/.cargo/registry/cache/*
+        sudo rm -rf ~/.cargo/registry/src/*
+        sudo rm -rf ~/.cargo/git/db/*
         sudo rm -rf /var/cache/*
         sudo rm -rf /var/log/*
         sudo rm -rf /home/runner/.cache/*
         sudo rm -rf /usr/share/doc/*
         sudo rm -rf /usr/share/man/*
+        sudo rm -rf /usr/share/locale/*
+        sudo rm -rf /usr/share/info/*
         sudo apt-get clean
         sudo apt-get autoclean
         sudo apt-get autoremove -y
-        # Очищаем старые скачанные файлы (старше 1 дня)
-        find downloads/ -type f -mtime +1 -delete 2>/dev/null || true
-        find scans/ -type f -mtime +1 -delete 2>/dev/null || true
+        # Очищаем ВСЕ скачанные файлы чтобы освободить максимум места
+        rm -rf downloads/* 2>/dev/null || true
+        rm -rf scans/* 2>/dev/null || true
+        # Очищаем кэш cargo полностью
+        rm -rf ~/.cargo/registry/cache/* 2>/dev/null || true
+        rm -rf ~/.cargo/git/db/* 2>/dev/null || true
         df -h
         
     - name: Build guloader
@@ -89,16 +96,17 @@ jobs:
         echo "Monitoring completed. Showing status..."
         ./target/release/guloader --config config.toml status
         
-        # Очищаем только временные файлы и старые скачанные файлы
-        echo "Cleaning up temporary files..."
+        # Максимальная очистка после выполнения
+        echo "Cleaning up all temporary files..."
         find data/ -name "*.db-journal" -delete 2>/dev/null || true
-        find scans/ -type f -mtime +1 -delete 2>/dev/null || true
-        # Удаляем старые скачанные файлы (старше 1 дня) чтобы освободить место
-        find downloads/ -type f -mtime +1 -delete 2>/dev/null || true
+        # Удаляем ВСЕ скачанные файлы чтобы освободить максимум места
+        rm -rf downloads/* 2>/dev/null || true
+        rm -rf scans/* 2>/dev/null || true
         
         # Дополнительная очистка системных файлов
         sudo rm -rf /tmp/*
         sudo rm -rf ~/.cargo/registry/cache/*
+        sudo rm -rf ~/.cargo/git/db/*
         sudo rm -rf /home/runner/.cache/*
         df -h
     
