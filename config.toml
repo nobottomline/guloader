@@ -9,6 +9,23 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
 [sites.eros]
 name = "Eros Moon"
 base_url = "https://eros-moon.xyz"
@@ -41,23 +58,6 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [sites.madara]
@@ -1688,4 +1688,256 @@ active = true
 title = "Absolute Sword Sense"
 site = "eros"
 url = "https://eros-moon.xyz/manga/absolute-sword-sense/"
+active = true
+
+[[manga]]
+title = "The Investor Who Sees the Future"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-investor-who-sees-the-future/"
+active = true
+
+[[manga]]
+title = "A Hero Who Is Good At Everything"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/a-hero-who-is-good-at-everything/"
+active = true
+
+[[manga]]
+title = "Rehabilitation Classroom"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/rehabilitation-classroom/"
+active = true
+
+[[manga]]
+title = "Reverse Tower Dungeon"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/reverse-tower-dungeon/"
+active = true
+
+[[manga]]
+title = "Heart-Pounding Cute Poem"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/heart-pounding-cute-poem/"
+active = true
+
+[[manga]]
+title = "The Betrayed Strongest Knight’s Revenge"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-betrayed-strongest-knights-revenge/"
+active = true
+
+[[manga]]
+title = "The Great Sage of the Namgung Clan"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-great-sage-of-the-namgung-clan/"
+active = true
+
+[[manga]]
+title = "Goddess of Abundance and the Genius Rogue Apostle"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/goddess-of-abundance-and-the-genius-rogue-apostle/"
+active = true
+
+[[manga]]
+title = "The Tale of the Skeleton Messenger"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-tale-of-the-skeleton-messenger/"
+active = true
+
+[[manga]]
+title = "The Eldest Son of the Marquis House is a Martial Artist"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-eldest-son-of-the-marquis-house-is-a-martial-artist/"
+active = true
+
+[[manga]]
+title = "The Weakest Slime I Once Saved Became the Strongest and Now Won’t Leave My Side"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-weakest-slime-i-once-saved-became-the-strongest-and-now-wont-leave-my-side/"
+active = true
+
+[[manga]]
+title = "I Became an S-Rank Hunter with the Demon Lord App"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/i-became-an-s-rank-hunter-with-the-demon-lord-app/"
+active = true
+
+[[manga]]
+title = "Zombies Don’t Bite Me"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/zombies-dont-bite-me/"
+active = true
+
+[[manga]]
+title = "What’s Our Hero Doing?"
+site = "eros"
+url = "https://eros-moon.xyz/manga/whats-our-hero-doing/"
+active = true
+
+[[manga]]
+title = "Absolute Dominion"
+site = "eros"
+url = "https://eros-moon.xyz/manga/absolute-dominion/"
+active = true
+
+[[manga]]
+title = "Reaper of the Drifting Moon"
+site = "eros"
+url = "https://eros-moon.xyz/manga/reaper-of-the-drifting-moon/"
+active = true
+
+[[manga]]
+title = "They Offered Their Loyalty to Me After I Obtained Financial Freedom"
+site = "eros"
+url = "https://eros-moon.xyz/manga/they-offered-their-loyalty-to-me-after-i-obtained-financial-freedom/"
+active = true
+
+[[manga]]
+title = "Versatile Sword Cultivator"
+site = "eros"
+url = "https://eros-moon.xyz/manga/versatile-sword-cultivator/"
+active = true
+
+[[manga]]
+title = "The Zerg Dominator"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-zerg-dominator/"
+active = true
+
+[[manga]]
+title = "The Genius Court Mage Who Quit Being a Corporate Slave – Dreaming of a Slow Life in the Frontier, but Ends Up Known as the Witch of the Edge"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-genius-court-mage-who-quit-being-a-corporate-slave-dreaming-of-a-slow-life-in-the-frontier-but-ends-up-known-as-the-witch-of-the-edge/"
+active = true
+
+[[manga]]
+title = "Becoming The Scholarly Saint"
+site = "eros"
+url = "https://eros-moon.xyz/manga/becoming-the-scholarly-saint/"
+active = true
+
+[[manga]]
+title = "Becoming a God, Starting as water monkey"
+site = "eros"
+url = "https://eros-moon.xyz/manga/becoming-a-god-starting-as-water-monkey/"
+active = true
+
+[[manga]]
+title = "The Strongest Tamer Returned from Another World with his Childhood Friend as his Familiar"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-strongest-tamer-returned-from-another-world-with-his-childhood-friend-as-his-familiar/"
+active = true
+
+[[manga]]
+title = "The Demon Lord-Class Player Who Returns from Death"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-demon-lord-class-player-who-returns-from-death/"
+active = true
+
+[[manga]]
+title = "All My Alter Egos Are Tycoons"
+site = "eros"
+url = "https://eros-moon.xyz/manga/all-my-alter-egos-are-tycoons/"
+active = true
+
+[[manga]]
+title = "Assistant Manager Kim Hates Idols"
+site = "eros"
+url = "https://eros-moon.xyz/manga/assistant-manager-kim-hates-idols/"
+active = true
+
+[[manga]]
+title = "A Hero Who Is Good At Everything"
+site = "eros"
+url = "https://eros-moon.xyz/manga/a-hero-who-is-good-at-everything/"
+active = true
+
+[[manga]]
+title = "I Won’t Be the Villain"
+site = "eros"
+url = "https://eros-moon.xyz/manga/i-wont-be-the-villain/"
+active = true
+
+[[manga]]
+title = "The Tale Of The Skeleton Messenger"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-tale-of-the-skeleton-messenger/"
+active = true
+
+[[manga]]
+title = "I Became an S-Rank Hunter with the Demon Lord App"
+site = "eros"
+url = "https://eros-moon.xyz/manga/i-became-an-s-rank-hunter-with-the-demon-lord-app/"
+active = true
+
+[[manga]]
+title = "The Apocalypse Has Arrived"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-apocalypse-has-arrived/"
+active = true
+
+[[manga]]
+title = "The Ten Thousand Races Invasion: Guardian of the Rear"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-ten-thousand-races-invasion-guardian-of-the-rear/"
+active = true
+
+[[manga]]
+title = "The Demonic Cult Leader Is Too Reluctant"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-demonic-cult-leader-is-too-reluctant/"
+active = true
+
+[[manga]]
+title = "The Hero Starts Over at the Academy"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-hero-starts-over-at-the-academy/"
+active = true
+
+[[manga]]
+title = "Necromancer’s Evolutionary Traits"
+site = "eros"
+url = "https://eros-moon.xyz/manga/necromancers-evolutionary-traits/"
+active = true
+
+[[manga]]
+title = "Master: This Villainous Disciple Is Not The Holy Child"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/master-this-villainous-disciple-is-not-the-holy-child/"
+active = true
+
+[[manga]]
+title = "Godly Strange World, I Possess Unique Enlightment"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/godly-strange-world-i-possess-unique-enlightment/"
+active = true
+
+[[manga]]
+title = "Escape from Another World"
+site = "madara"
+url = "https://madarascans.com/series/escape-from-another-world/"
+active = true
+
+[[manga]]
+title = "Death Penalty"
+site = "madara"
+url = "https://madarascans.com/series/death-penalty/"
+active = true
+
+[[manga]]
+title = "Concept Grasping Magic Genius"
+site = "madara"
+url = "https://madarascans.com/series/concept-grasping-magic-genius/"
+active = true
+
+[[manga]]
+title = "The Thousand-Faced Actor"
+site = "madara"
+url = "https://madarascans.com/series/the-thousand-faced-actor/"
+active = true
+
+[[manga]]
+title = "The Mad Dog of the Duke’s Estate"
+site = "madara"
+url = "https://madarascans.com/series/the-mad-dog-of-the-dukes-estate/"
 active = true
