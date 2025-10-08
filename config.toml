@@ -9,23 +9,6 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.eros]
-name = "Eros Moon"
-base_url = "https://eros-moon.xyz"
-scanner_type = "eros"
-downloader_type = "eros"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.eros.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
 [sites.madara]
 name = "Madarascans"
 base_url = "https://madarascans.com"
@@ -41,6 +24,23 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.eros]
+name = "Eros Moon"
+base_url = "https://eros-moon.xyz"
+scanner_type = "eros"
+downloader_type = "eros"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.eros.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [sites.tecno]
@@ -2102,4 +2102,22 @@ active = true
 title = "God of Killers"
 site = "madara"
 url = "https://madarascans.com/series/god-of-killers/"
+active = true
+
+[[manga]]
+title = "The Returned C-Rank Tank Won’t Die!"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-returned-c-rank-tank-wont-die/"
+active = true
+
+[[manga]]
+title = "The Strongest Hero with Negative Destructive Power"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-strongest-hero-with-negative-destructive-power/"
+active = true
+
+[[manga]]
+title = "The Demon in Human Form"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-demon-in-human-form/"
 active = true
