@@ -9,38 +9,21 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
+[sites.eros]
+name = "Eros Moon"
+base_url = "https://eros-moon.xyz"
+scanner_type = "eros"
+downloader_type = "eros"
+rate_limit_ms = 1500
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.madara.selectors]
+[sites.eros.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://en-thunderscans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.thunder.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [sites.tecno]
@@ -60,21 +43,38 @@ image_container = ".reader-main"
 image_url = ".reader-main img"
 next_page = ".nav-next a"
 
-[sites.eros]
-name = "Eros Moon"
-base_url = "https://eros-moon.xyz"
-scanner_type = "eros"
-downloader_type = "eros"
-rate_limit_ms = 1500
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.eros.selectors]
+[sites.thunder.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.madara.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -2042,4 +2042,40 @@ active = true
 title = "The Skeleton Soldier Failed to Defend the Dungeon"
 site = "tecno"
 url = "https://tecno-moon.xyz/manga/the-skeleton-soldier-failed-to-defend-the-dungeon/"
+active = true
+
+[[manga]]
+title = "The Demon in Human Form"
+site = "madara"
+url = "https://madarascans.com/series/the-demon-in-human-form/"
+active = true
+
+[[manga]]
+title = "Nano Machine"
+site = "eros"
+url = "https://eros-moon.xyz/manga/nano-machine/"
+active = true
+
+[[manga]]
+title = "Reaper of the Drifting Moon"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/reaper-of-the-drifting-moon/"
+active = true
+
+[[manga]]
+title = "I Use a Top-Tier System to Reshape the World"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/i-use-a-top-tier-system-to-reshape-the-world/"
+active = true
+
+[[manga]]
+title = "Turn-based Wizard"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/turn-based-wizard/"
+active = true
+
+[[manga]]
+title = "The Strongest Assassin Gets Transferred to Another World With His Whole Class"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-strongest-assassin-gets-transferred-to-another-world-with-his-whole-class/"
 active = true
