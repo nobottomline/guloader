@@ -26,23 +26,6 @@ image_container = ".reader-main"
 image_url = ".reader-main img"
 next_page = ".nav-next a"
 
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
 [sites.madara]
 name = "Madarascans"
 base_url = "https://madarascans.com"
@@ -75,6 +58,23 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -1958,4 +1958,82 @@ active = true
 title = "Solo Leveling: Ragnarok"
 site = "eros"
 url = "https://eros-moon.xyz/manga/solo-leveling-ragnarok/"
+active = true
+
+[[manga]]
+title = "The Return of the Mythical Archmage"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-return-of-the-mythical-archmage/"
+active = true
+
+[[manga]]
+title = "Solo Resurrection"
+site = "eros"
+url = "https://eros-moon.xyz/manga/solo-resurrection/"
+active = true
+
+[[manga]]
+title = "Necromancer Academy and the Genius Summoner"
+site = "eros"
+url = "https://eros-moon.xyz/manga/necromancer-academy-and-the-genius-summoner/"
+active = true
+
+[[manga]]
+title = "A Modern Man Who Got Transmigrated To Murim"
+site = "eros"
+url = "https://eros-moon.xyz/manga/a-modern-man-who-got-transmigrated-to-murim/"
+active = true
+
+[[manga]]
+title = "Return of the Disaster-Class Hero"
+site = "eros"
+url = "https://eros-moon.xyz/manga/return-of-the-disaster-class-hero/"
+active = true
+
+[[manga]]
+title = "Pick Me Up, Infinite Gacha"
+site = "eros"
+url = "https://eros-moon.xyz/manga/pick-me-up-infinite-gacha/"
+active = true
+
+[[manga]]
+title = "Master of All Skills"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/master-of-all-skills/"
+active = true
+
+[[manga]]
+title = "The Return of the Mythical Archmage"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-return-of-the-mythical-archmage/"
+active = true
+
+[[manga]]
+title = "I Quit the Hero’s Party"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/i-quit-the-heros-party/"
+active = true
+
+[[manga]]
+title = "Seian"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/seian/"
+active = true
+
+[[manga]]
+title = "Arcane Sniper"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/arcane-sniper/"
+active = true
+
+[[manga]]
+title = "Return of the Disaster-Class Hero"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/return-of-the-disaster-class-hero/"
+active = true
+
+[[manga]]
+title = "Pick Me Up!"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/pick-me-up/"
 active = true
