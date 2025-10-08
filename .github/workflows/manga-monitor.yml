@@ -27,16 +27,17 @@ jobs:
       with:
         components: rustfmt, clippy
     
-    - name: Cache cargo dependencies (limited)
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.cargo/registry
-          ~/.cargo/git
-          target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-cargo-
+    # Отключаем кэш cargo чтобы сэкономить место на диске
+    # - name: Cache cargo dependencies
+    #   uses: actions/cache@v4
+    #   with:
+    #     path: |
+    #       ~/.cargo/registry
+    #       ~/.cargo/git
+    #       target
+    #     key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-cargo-
     
     - name: Clean up disk space (aggressive)
       run: |
@@ -63,8 +64,12 @@ jobs:
         rm -rf ~/.cargo/git/db/* 2>/dev/null || true
         df -h
         
-    - name: Build guloader
-      run: cargo build --release
+    - name: Build guloader (optimized for space)
+      run: |
+        # Очищаем target перед сборкой
+        rm -rf target/
+        # Сборка с оптимизацией для экономии места
+        cargo build --release --offline || cargo build --release
     
     - name: Configure Git
       run: |
@@ -102,6 +107,8 @@ jobs:
         # Удаляем ВСЕ скачанные файлы чтобы освободить максимум места
         rm -rf downloads/* 2>/dev/null || true
         rm -rf scans/* 2>/dev/null || true
+        # Удаляем target чтобы освободить место
+        rm -rf target/ 2>/dev/null || true
         
         # Дополнительная очистка системных файлов
         sudo rm -rf /tmp/*
