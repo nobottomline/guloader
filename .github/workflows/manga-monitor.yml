@@ -45,8 +45,15 @@ jobs:
         sudo rm -rf ~/.cargo/registry/cache/*
         sudo rm -rf /var/cache/*
         sudo rm -rf /var/log/*
+        sudo rm -rf /home/runner/.cache/*
+        sudo rm -rf /usr/share/doc/*
+        sudo rm -rf /usr/share/man/*
         sudo apt-get clean
         sudo apt-get autoclean
+        sudo apt-get autoremove -y
+        # Очищаем старые скачанные файлы (старше 1 дня)
+        find downloads/ -type f -mtime +1 -delete 2>/dev/null || true
+        find scans/ -type f -mtime +1 -delete 2>/dev/null || true
         df -h
         
     - name: Build guloader
@@ -82,15 +89,17 @@ jobs:
         echo "Monitoring completed. Showing status..."
         ./target/release/guloader --config config.toml status
         
-        # Очищаем только временные файлы, НЕ удаляем downloads/
+        # Очищаем только временные файлы и старые скачанные файлы
         echo "Cleaning up temporary files..."
         find data/ -name "*.db-journal" -delete 2>/dev/null || true
         find scans/ -type f -mtime +1 -delete 2>/dev/null || true
-        # НЕ удаляем downloads/ - они должны сохраняться!
+        # Удаляем старые скачанные файлы (старше 1 дня) чтобы освободить место
+        find downloads/ -type f -mtime +1 -delete 2>/dev/null || true
         
         # Дополнительная очистка системных файлов
         sudo rm -rf /tmp/*
         sudo rm -rf ~/.cargo/registry/cache/*
+        sudo rm -rf /home/runner/.cache/*
         df -h
     
     - name: Commit changes
