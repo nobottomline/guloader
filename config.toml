@@ -9,21 +9,21 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://en-thunderscans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
+[sites.eros]
+name = "Eros Moon"
+base_url = "https://eros-moon.xyz"
+scanner_type = "eros"
+downloader_type = "eros"
+rate_limit_ms = 1500
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.thunder.selectors]
+[sites.eros.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [sites.tecno]
@@ -43,21 +43,21 @@ image_container = ".reader-main"
 image_url = ".reader-main img"
 next_page = ".nav-next a"
 
-[sites.eros]
-name = "Eros Moon"
-base_url = "https://eros-moon.xyz"
-scanner_type = "eros"
-downloader_type = "eros"
-rate_limit_ms = 1500
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.eros.selectors]
+[sites.thunder.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
 next_page = ".nav-next a"
 
 [sites.madara]
@@ -2354,4 +2354,34 @@ active = true
 title = "The Eldest Son of the Marquis House is a Martial Artist"
 site = "eros"
 url = "https://eros-moon.xyz/manga/the-eldest-son-of-the-marquis-house-is-a-martial-artist/"
+active = true
+
+[[manga]]
+title = "The Genius Assassin’s Second Life Begins at the Academy"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-genius-assassins-second-life-begins-at-the-academy/"
+active = true
+
+[[manga]]
+title = "Cerberus"
+site = "eros"
+url = "https://eros-moon.xyz/manga/cerberus/"
+active = true
+
+[[manga]]
+title = "The Strongest Assassin Levels Up in Another World"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-strongest-assassin-levels-up-in-another-world/"
+active = true
+
+[[manga]]
+title = "Beacon of Dawn"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/beacon-of-dawn/"
+active = true
+
+[[manga]]
+title = "Embodiment of the Assassin in the Murim World"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/embodiment-of-the-assassin-in-the-murim-world/"
 active = true
