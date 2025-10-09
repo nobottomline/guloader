@@ -9,6 +9,23 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
 [sites.madara]
 name = "Madarascans"
 base_url = "https://madarascans.com"
@@ -18,23 +35,6 @@ rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
 [sites.madara.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://en-thunderscans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.thunder.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -60,21 +60,21 @@ image_container = ".reader-main"
 image_url = ".reader-main img"
 next_page = ".nav-next a"
 
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.tecno.selectors]
+[sites.thunder.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -2756,4 +2756,16 @@ active = true
 title = "Beyond the Abyss of the Spirit Labyrinth"
 site = "madara"
 url = "https://madarascans.com/series/beyond-the-abyss-of-the-spirit-labyrinth/"
+active = true
+
+[[manga]]
+title = "Breakers"
+site = "madara"
+url = "https://madarascans.com/series/breakers/"
+active = true
+
+[[manga]]
+title = "Did Someone Force You to Become the Heavenly Demon?"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/did-someone-force-you-to-become-the-heavenly-demon/"
 active = true
