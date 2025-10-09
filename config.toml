@@ -9,23 +9,6 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://en-thunderscans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.thunder.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
 [sites.eros]
 name = "Eros Moon"
 base_url = "https://eros-moon.xyz"
@@ -41,6 +24,23 @@ chapter_title = ".chapternum"
 chapter_url = ".eph-num a"
 image_container = ".reader-main"
 image_url = ".reader-main img"
+next_page = ".nav-next a"
+
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.thunder.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
 next_page = ".nav-next a"
 
 [sites.madara]
@@ -2456,4 +2456,16 @@ active = true
 title = "The Trashy PD Has To Survive as an Idol"
 site = "eros"
 url = "https://eros-moon.xyz/manga/the-trashy-pd-has-to-survive-as-an-idol/"
+active = true
+
+[[manga]]
+title = "The Former Mercenary’s Life as a Prosecutor"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-former-mercenarys-life-as-a-prosecutor/"
+active = true
+
+[[manga]]
+title = "Hiding a Logistics Center in The Apocalypse"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/hiding-a-logistics-center-in-the-apocalypse/"
 active = true
