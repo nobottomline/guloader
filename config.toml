@@ -2799,3 +2799,9 @@ title = "Bari, the Thunder that Awoke the Stars"
 site = "thunder"
 url = "https://en-thunderscans.com/comics/bari-the-thunder-that-awoke-the-stars/"
 active = true
+
+[[manga]]
+title = "How to Build a Time Machine"
+site = "madara"
+url = "https://madarascans.com/series/how-to-build-a-time-machine/"
+active = true
