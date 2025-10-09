@@ -9,6 +9,23 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.madara.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
+next_page = ".nav-next a"
+
 [sites.eros]
 name = "Eros Moon"
 base_url = "https://eros-moon.xyz"
@@ -35,23 +52,6 @@ rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
 [sites.thunder.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.madara.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -2468,4 +2468,10 @@ active = true
 title = "Hiding a Logistics Center in The Apocalypse"
 site = "thunder"
 url = "https://en-thunderscans.com/comics/hiding-a-logistics-center-in-the-apocalypse/"
+active = true
+
+[[manga]]
+title = "Overpower Your Enemies by the Law"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/overpower-your-enemies-by-the-law/"
 active = true
