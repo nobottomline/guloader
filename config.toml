@@ -9,40 +9,6 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://en-thunderscans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.thunder.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
 [sites.madara]
 name = "Madarascans"
 base_url = "https://madarascans.com"
@@ -69,6 +35,40 @@ rate_limit_ms = 1500
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
 [sites.eros.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.thunder.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -2594,4 +2594,88 @@ active = true
 title = "A Barbarian’s Adventure in a Fantasy World"
 site = "tecno"
 url = "https://tecno-moon.xyz/manga/a-barbarians-adventure-in-a-fantasy-world/"
+active = true
+
+[[manga]]
+title = "Return of the Sword God-Rank Civil Servant"
+site = "eros"
+url = "https://eros-moon.xyz/manga/return-of-the-sword-god-rank-civil-servant/"
+active = true
+
+[[manga]]
+title = "The World After The End"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-world-after-the-end/"
+active = true
+
+[[manga]]
+title = "Genius Archer’s Streaming"
+site = "eros"
+url = "https://eros-moon.xyz/manga/genius-archers-streaming/"
+active = true
+
+[[manga]]
+title = "Absolute Regression"
+site = "eros"
+url = "https://eros-moon.xyz/manga/absolute-regression/"
+active = true
+
+[[manga]]
+title = "Solo Max-Level Newbie"
+site = "eros"
+url = "https://eros-moon.xyz/manga/solo-max-level-newbie/"
+active = true
+
+[[manga]]
+title = "Heavenly Inquisition Sword"
+site = "eros"
+url = "https://eros-moon.xyz/manga/heavenly-inquisition-sword/"
+active = true
+
+[[manga]]
+title = "I’m an Undercover Agent in the Demon Nation"
+site = "madara"
+url = "https://madarascans.com/series/im-an-undercover-agent-in-the-demon-nation/"
+active = true
+
+[[manga]]
+title = "It turns out that I am the second generation of demons"
+site = "madara"
+url = "https://madarascans.com/series/it-turns-out-that-i-am-the-second-generation-of-demons/"
+active = true
+
+[[manga]]
+title = "I Quit My Job Because I Was Too Busy Being a Genius Court Wizard"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/i-quit-my-job-because-i-was-too-busy-being-a-genius-court-wizard/"
+active = true
+
+[[manga]]
+title = "Return of the Sword God-Rank Civil Servant"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/return-of-the-sword-god-rank-civil-servant/"
+active = true
+
+[[manga]]
+title = "F-Class Destiny Hunter"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/f-class-destiny-hunter/"
+active = true
+
+[[manga]]
+title = "The Illegitimate Who Devours Weapons"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/the-illegitimate-who-devours-weapons/"
+active = true
+
+[[manga]]
+title = "Absolute Regression"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/absolute-regression/"
+active = true
+
+[[manga]]
+title = "Heavenly Inquisition Sword"
+site = "tecno"
+url = "https://tecno-moon.xyz/manga/heavenly-inquisition-sword/"
 active = true
