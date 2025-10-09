@@ -9,15 +9,15 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
 scanner_type = "madara"
 downloader_type = "madara"
 rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.madara.selectors]
+[sites.thunder.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -60,15 +60,15 @@ image_container = ".reader-main"
 image_url = ".reader-main img"
 next_page = ".nav-next a"
 
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://en-thunderscans.com"
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
 scanner_type = "madara"
 downloader_type = "madara"
 rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
-[sites.thunder.selectors]
+[sites.madara.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -2780,4 +2780,22 @@ active = true
 title = "A Regressor’s Tale of Cultivation"
 site = "eros"
 url = "https://eros-moon.xyz/manga/a-regressors-tale-of-cultivation/"
+active = true
+
+[[manga]]
+title = "Rebirth: My Vengeance Through The Mirror"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/rebirth-my-vengeance-through-the-mirror/"
+active = true
+
+[[manga]]
+title = "Reincarnation of the Martial God"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/reincarnation-of-the-martial-god/"
+active = true
+
+[[manga]]
+title = "Bari, the Thunder that Awoke the Stars"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/bari-the-thunder-that-awoke-the-stars/"
 active = true
