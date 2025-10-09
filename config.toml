@@ -9,6 +9,23 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
+[sites.madara]
+name = "Madarascans"
+base_url = "https://madarascans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.madara.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
+next_page = ".nav-next a"
+
 [sites.tecno]
 name = "Tecno Moon"
 base_url = "https://tecno-moon.xyz"
@@ -18,6 +35,23 @@ rate_limit_ms = 1500
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
 [sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
+[sites.eros]
+name = "Eros Moon"
+base_url = "https://eros-moon.xyz"
+scanner_type = "eros"
+downloader_type = "eros"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.eros.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -41,40 +75,6 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.madara]
-name = "Madarascans"
-base_url = "https://madarascans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.madara.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.eros]
-name = "Eros Moon"
-base_url = "https://eros-moon.xyz"
-scanner_type = "eros"
-downloader_type = "eros"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.eros.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -2774,4 +2774,10 @@ active = true
 title = "Who’s threatening you with a knife to make you a Heavenly Demon?"
 site = "madara"
 url = "https://madarascans.com/series/someone-threatened-to-do-it-with-a-knife/"
+active = true
+
+[[manga]]
+title = "A Regressor’s Tale of Cultivation"
+site = "eros"
+url = "https://eros-moon.xyz/manga/a-regressors-tale-of-cultivation/"
 active = true
