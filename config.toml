@@ -26,6 +26,23 @@ image_container = ".reading-content"
 image_url = ".reading-content img"
 next_page = ".nav-next a"
 
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
 [sites.eros]
 name = "Eros Moon"
 base_url = "https://eros-moon.xyz"
@@ -58,23 +75,6 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -2678,4 +2678,16 @@ active = true
 title = "Heavenly Inquisition Sword"
 site = "tecno"
 url = "https://tecno-moon.xyz/manga/heavenly-inquisition-sword/"
+active = true
+
+[[manga]]
+title = "Villain to Kill"
+site = "eros"
+url = "https://eros-moon.xyz/manga/villain-to-kill/"
+active = true
+
+[[manga]]
+title = "Luoyang Branch of the Heavenly Demon Cult"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/luoyang-branch-of-the-heavenly-demon-cult/"
 active = true
