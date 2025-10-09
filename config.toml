@@ -9,6 +9,40 @@ max_size_gb = 50
 compression = true
 thumbnail_size = 200
 
+[sites.thunder]
+name = "Thunderscans"
+base_url = "https://en-thunderscans.com"
+scanner_type = "madara"
+downloader_type = "madara"
+rate_limit_ms = 1000
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.thunder.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = "a"
+image_container = ".reading-content"
+image_url = ".reading-content img"
+next_page = ".nav-next a"
+
+[sites.tecno]
+name = "Tecno Moon"
+base_url = "https://tecno-moon.xyz"
+scanner_type = "tecno"
+downloader_type = "tecno"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.tecno.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
 [sites.eros]
 name = "Eros Moon"
 base_url = "https://eros-moon.xyz"
@@ -35,40 +69,6 @@ rate_limit_ms = 1000
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 
 [sites.madara.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = "a"
-image_container = ".reading-content"
-image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.tecno]
-name = "Tecno Moon"
-base_url = "https://tecno-moon.xyz"
-scanner_type = "tecno"
-downloader_type = "tecno"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.tecno.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
-next_page = ".nav-next a"
-
-[sites.thunder]
-name = "Thunderscans"
-base_url = "https://en-thunderscans.com"
-scanner_type = "madara"
-downloader_type = "madara"
-rate_limit_ms = 1000
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.thunder.selectors]
 manga_list = ".story_item"
 chapter_list = "#chapterlist li"
 chapter_title = ".chapternum"
@@ -2300,4 +2300,58 @@ active = true
 title = "A Horde Of Zombies"
 site = "eros"
 url = "https://eros-moon.xyz/manga/a-horde-of-zombies/"
+active = true
+
+[[manga]]
+title = "The Support Ate it All"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/the-support-ate-it-all/"
+active = true
+
+[[manga]]
+title = "The Last Rebel The Savior Android Changes The Future By Leveling Up"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-last-rebel-the-savior-android-changes-the-future-by-leveling-up/"
+active = true
+
+[[manga]]
+title = "The Returned C-Rank Tank Won’t Die!"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-returned-c-rank-tank-wont-die/"
+active = true
+
+[[manga]]
+title = "The Art of Leaving Work on Time"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-art-of-leaving-work-on-time/"
+active = true
+
+[[manga]]
+title = "Return of the First Patriarch: The Strongest Reincarnates into His Descendant 1000 Years Later"
+site = "eros"
+url = "https://eros-moon.xyz/manga/return-of-the-first-patriarch-the-strongest-reincarnates-into-his-descendant-1000-years-later/"
+active = true
+
+[[manga]]
+title = "The Eternal Support Mage Becomes the Strongest Sage"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-eternal-support-mage-becomes-the-strongest-sage/"
+active = true
+
+[[manga]]
+title = "The Awakening of Light Magic"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-awakening-of-light-magic/"
+active = true
+
+[[manga]]
+title = "The Ugly Killer"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-ugly-killer/"
+active = true
+
+[[manga]]
+title = "The Eldest Son of the Marquis House is a Martial Artist"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-eldest-son-of-the-marquis-house-is-a-martial-artist/"
 active = true
