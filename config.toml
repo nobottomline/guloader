@@ -26,6 +26,23 @@ image_container = ".reader-main"
 image_url = ".reader-main img"
 next_page = ".nav-next a"
 
+[sites.eros]
+name = "Eros Moon"
+base_url = "https://eros-moon.xyz"
+scanner_type = "eros"
+downloader_type = "eros"
+rate_limit_ms = 1500
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+[sites.eros.selectors]
+manga_list = ".story_item"
+chapter_list = "#chapterlist li"
+chapter_title = ".chapternum"
+chapter_url = ".eph-num a"
+image_container = ".reader-main"
+image_url = ".reader-main img"
+next_page = ".nav-next a"
+
 [sites.thunder]
 name = "Thunderscans"
 base_url = "https://en-thunderscans.com"
@@ -58,23 +75,6 @@ chapter_title = ".chapternum"
 chapter_url = "a"
 image_container = ".reading-content"
 image_url = ".reading-content img"
-next_page = ".nav-next a"
-
-[sites.eros]
-name = "Eros Moon"
-base_url = "https://eros-moon.xyz"
-scanner_type = "eros"
-downloader_type = "eros"
-rate_limit_ms = 1500
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-
-[sites.eros.selectors]
-manga_list = ".story_item"
-chapter_list = "#chapterlist li"
-chapter_title = ".chapternum"
-chapter_url = ".eph-num a"
-image_container = ".reader-main"
-image_url = ".reader-main img"
 next_page = ".nav-next a"
 
 [scanner]
@@ -2522,4 +2522,28 @@ active = true
 title = "The 3rd Prince of the Fallen Kingdom Returns"
 site = "thunder"
 url = "https://en-thunderscans.com/comics/the-3rd-prince-of-the-fallen-kingdom-returns/"
+active = true
+
+[[manga]]
+title = "A Barbarian’s Adventure in a Fantasy World"
+site = "thunder"
+url = "https://en-thunderscans.com/comics/a-barbarians-adventure-in-a-fantasy-world/"
+active = true
+
+[[manga]]
+title = "Tower of God: Urek’s Ascent"
+site = "eros"
+url = "https://eros-moon.xyz/manga/tower-of-god-ureks-ascent/"
+active = true
+
+[[manga]]
+title = "Lord of Summons! Sudden Mutation"
+site = "eros"
+url = "https://eros-moon.xyz/manga/lord-of-summons-sudden-mutation/"
+active = true
+
+[[manga]]
+title = "The Third Prince of the Fallen Kingdom has Regressed"
+site = "eros"
+url = "https://eros-moon.xyz/manga/the-third-prince-of-the-fallen-kingdom-has-regressed/"
 active = true
