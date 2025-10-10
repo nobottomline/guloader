@@ -2859,3 +2859,15 @@ title = "All Hail the Sect Leader"
 site = "thunder"
 url = "https://en-thunderscans.com/comics/all-hail-the-sect-leader/"
 active = true
+
+[[manga]]
+title = "My Disciples Cultivate, While I Slack Off!"
+site = "madara"
+url = "https://madarascans.com/series/my-disciples-cultivate-while-i-slack-off/"
+active = true
+
+[[manga]]
+title = "Red Shirt"
+site = "madara"
+url = "https://madarascans.com/series/red-shirt/"
+active = true
